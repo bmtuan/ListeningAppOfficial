@@ -1,12 +1,10 @@
-package Controller;
+package src.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import View.LevelPanel;
-import View.MainFrame;
-import View.TopicPanel;
-import Model.LevelModel;
+import src.View.*;
+import src.Model.LevelModel;
 public class LevelController implements ActionListener {
     private LevelPanel levelPanel;
 

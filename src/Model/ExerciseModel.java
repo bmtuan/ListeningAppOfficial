@@ -1,6 +1,6 @@
 
-package Model;
-import DAO.ExerciseDAO;
+package src.Model;
+import src.DAO.ExerciseDAO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

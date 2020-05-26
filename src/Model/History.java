@@ -1,4 +1,4 @@
-package Model;
+package src.Model;
 public class History {
     private int ID;
     private int Level;

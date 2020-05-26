@@ -1,4 +1,4 @@
-package View;
+package src.View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -7,8 +7,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import Model.*;
-import Controller.MenuController;
+import src.Model.*;
+import src.Controller.MenuController;
 public class HistoryPanel extends View implements ActionListener {
     private JButton backButton;
     private JPanel historyPage1;

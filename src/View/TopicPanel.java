@@ -1,9 +1,9 @@
-package View;
+package src.View;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import Model.LevelModel;
+import src.Model.LevelModel;
 
 import java.awt.*;
 

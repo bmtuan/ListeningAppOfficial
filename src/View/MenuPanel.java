@@ -1,4 +1,4 @@
-package View;
+package src.View;
 import javax.swing.*;
 
 public class MenuPanel extends View{

@@ -1,5 +1,5 @@
 
-package Model;
+package src.Model;
 
 import java.util.ArrayList;
 import java.util.List;

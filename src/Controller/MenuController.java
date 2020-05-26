@@ -1,10 +1,10 @@
-package Controller;
+package src.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.HistoryModel;
-import View.*;
+import src.Model.HistoryModel;
+import src.View.*;
 
 public class MenuController implements ActionListener {
     private MenuController() {

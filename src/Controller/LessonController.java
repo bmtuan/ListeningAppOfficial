@@ -1,5 +1,5 @@
-package Controller;
-import View.LessonPanel;
+package src.Controller;
+import src.View.LessonPanel;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -30,15 +30,12 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-import Model.Exercise;
-import Model.ExerciseModel;
-import Model.Track;
+import src.Model.*;
+
 import javax.swing.text.StyledDocument;
 import org.jfree.data.xy.XYDataset;
-import Controller.TopicController;
-import Model.LevelModel;
-import View.MainFrame;
-import View.TopicPanel;
+import src.Controller.TopicController;
+import src.View.*;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.ComboBoxModel;

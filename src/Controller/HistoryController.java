@@ -1,7 +1,7 @@
-package Controller;
+package src.Controller;
 
-import Model.HistoryModel;
-import View.HistoryPanel;
+import src.Model.HistoryModel;
+import src.View.HistoryPanel;
 public class HistoryController {
     HistoryModel historyModel;
     HistoryPanel historyPanel; 

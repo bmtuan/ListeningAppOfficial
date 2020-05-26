@@ -1,4 +1,4 @@
-package Controller;
+package src.Controller;
 
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
@@ -11,12 +11,9 @@ import java.awt.*;
 
 import javax.swing.JLabel;
 
-import View.*;
-import Model.Exercise;
-import Model.ExerciseModel;
-import Model.LevelModel;
-import Model.Track;
-import DAO.ExerciseDAO;
+import src.View.*;
+import src.Model.*;
+import src.DAO.ExerciseDAO;
 
 public class TopicController implements ActionListener, MouseListener {
     private LevelModel levelModel;

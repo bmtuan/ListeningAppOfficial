@@ -1,7 +1,7 @@
-package Model;
+package src.Model;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import DAO.HistoryDAO;
+import src.DAO.HistoryDAO;
 
 public class HistoryModel {
     private ArrayList<History> listHistory;

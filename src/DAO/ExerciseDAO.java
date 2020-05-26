@@ -1,11 +1,11 @@
-package DAO;
+package src.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Model.Track;
-import Model.Exercise;
+import src.Model.Track;
+import src.Model.Exercise;
 public class ExerciseDAO {
     public static ArrayList<Exercise> getAllExerciseByLv(int Lv) throws SQLException{
     ArrayList<Exercise> list = new ArrayList<>();

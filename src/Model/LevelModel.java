@@ -1,9 +1,9 @@
 
-package Model;
+package src.Model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import DAO.ExerciseDAO;
+import src.DAO.ExerciseDAO;
 import java.util.List;
 
 public class LevelModel {
