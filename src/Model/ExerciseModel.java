@@ -1,4 +1,3 @@
-
 package src.Model;
 import src.DAO.ExerciseDAO;
 import java.io.BufferedReader;
@@ -84,17 +83,11 @@ public class ExerciseModel {
         currentTrack++;
         System.out.println("Current track: " + Integer.toString(currentTrack));
         String audioPath = this.currentExercise.getListTrack().get(currentTrack).getAudio();
-        String transcriptPath = this.currentExercise.getListTrack().get(currentTrack).getTranscriptPath();
-        BufferedReader bf = new BufferedReader(new FileReader(new File(transcriptPath)));
+        
         audioInputStream = AudioSystem.getAudioInputStream(new File(audioPath).getAbsoluteFile());
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);
-        transcript = "";
-        String tmp;
-        while ((tmp = bf.readLine()) != null){
-            transcript += tmp;
-        }
-        this.currentExercise.getListTrack().get(currentTrack).setTranscript(transcript);
+        transcript = currentExercise.getListTrack().get(currentTrack).getTranscript();
         words = transcript.split(" ");
         standardizedWords = new String[words.length];
         for (int i = 0; i < words.length; ++i){
@@ -105,9 +98,6 @@ public class ExerciseModel {
             standardizedWords[i] = words[i].substring(beginPos, endPos);
         }
         pointPerWord = 100/words.length;
-        for (String word: words)
-            System.out.print(word + " ");
-        
         time = (int)clip.getMicrosecondLength()/1000000;
         percentPerSec = 100/time;
         

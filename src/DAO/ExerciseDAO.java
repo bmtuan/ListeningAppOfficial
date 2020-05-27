@@ -41,7 +41,7 @@ public class ExerciseDAO {
             while (rs.next()){
                 Track tr = new Track();
                 tr.setAudio(rs.getString("Audio"));
-                tr.setTranscriptPath(rs.getString("Transcript"));
+                tr.setTranscript(rs.getString("Transcript"));
                 tr.setTime(rs.getInt("Time"));
                 listTrack.add(tr);
                 }

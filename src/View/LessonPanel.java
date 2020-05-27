@@ -1,4 +1,4 @@
-package src.View;
+package  src.View;
 
 
 import javax.swing.JButton;
@@ -46,7 +46,7 @@ public class LessonPanel extends JPanel{
     private JButton bNext;
     private JButton bListen;
     private JButton bPlay;
-
+    JLabel hint;
     private JComboBox trackBox;
     Box boxContainer;
     private JButton bBack;
@@ -60,11 +60,14 @@ public class LessonPanel extends JPanel{
         // panel for back button
         JPanel buttonPanel = new JPanel();
         bBack = new JButton("Back");
-  
+        
         boxContainer = Box.createHorizontalBox();
         boxContainer.add(Box.createHorizontalStrut(30));
+        bBack.setPreferredSize(new Dimension(60, boxContainer.getHeight()));
         boxContainer.add(bBack);
-        boxContainer.setPreferredSize(new Dimension(800, 50));
+        //bBack.setPreferredSize(new Dimension(80, boxContainer.getHeight()));
+        boxContainer.setPreferredSize(new Dimension(750, 50));
+        boxContainer.setBorder(BorderFactory.createLineBorder(Color.yellow));
         buttonPanel.add(boxContainer);
         buttonPanel.setPreferredSize(new Dimension(800, 100));
         
@@ -80,11 +83,11 @@ public class LessonPanel extends JPanel{
         // panel for user typing
         JPanel textPanel = new JPanel();
         text = new JTextField();
-        text.setPreferredSize(new Dimension(750, 30));
+        text.setPreferredSize(new Dimension(700, 30));
         text.setTransferHandler(null);
-
-        //text.addKeyListener(lessonController);
         textPanel.add(text);
+        hint = new JLabel();
+        textPanel.add(hint);
 
 
         // panel containing answerPanel and nextPanel 
@@ -148,12 +151,17 @@ public class LessonPanel extends JPanel{
         this.add(audioPanel);
         this.add(textPanel);
         this.setBackground(Color.white);
-//        this.getContentPane().add(mainPanel);
-//        this.setSize(800,600);
-//        this.setVisible(true);
-//        this.setLocationRelativeTo(null);
+
     }
 
+    public JLabel getHint() {
+        return hint;
+    }
+
+    public void setHint(JLabel hint) {
+        this.hint = hint;
+    }
+    
     public Box getBoxContainer() {
         return boxContainer;
     }

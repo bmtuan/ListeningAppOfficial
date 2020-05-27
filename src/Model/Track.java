@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package src.Model;
 
 /**
@@ -10,8 +5,7 @@ package src.Model;
  * @author DELL 7577
  */
 public class Track {
-    private String Audio, TranscriptPath;
-    private String Transcript;
+    private String Audio, Transcript;
     private int Time;
 
     public Track() {
@@ -25,14 +19,7 @@ public class Track {
         Audio = audio;
     }
 
-    public String getTranscriptPath() {
-        return TranscriptPath;
-    }
-
-    public void setTranscriptPath(String TranscriptPath) {
-        this.TranscriptPath = TranscriptPath;
-    }
-    
+ 
 
     public String getTranscript() {
         return Transcript;
@@ -50,15 +37,10 @@ public class Track {
         Time = time;
     }
 
-    public Track(String audio, String transcriptPath, int time) {
+    public Track(String audio, String transcript, int time) {
         Audio = audio;
-        TranscriptPath = transcriptPath;
+        Transcript = transcript;
         Time = time;
-    }
-
-    @Override
-    public String toString() {
-        return "Track [Audio=" + Audio + ", Time=" + Time + ", Transcript=" + Transcript + "]";
     }
 
 

@@ -1,4 +1,5 @@
 package src.Controller;
+
 import src.View.LessonPanel;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -35,6 +36,7 @@ import src.Model.*;
 import javax.swing.text.StyledDocument;
 import org.jfree.data.xy.XYDataset;
 import src.Controller.TopicController;
+import src.DAO.HistoryDAO;
 import src.View.*;
 import java.util.ArrayList;
 import javax.swing.Box;
@@ -78,8 +80,6 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         String[] trackList = new String[numOfTracks];
         for (int i = 0; i < numOfTracks; ++i)
             trackList[i] = "Track " + Integer.toString(i + 1);
-        for (String word : trackList)
-            System.out.println(word);
         lessonPanel.setTrackBox(new JComboBox(trackList));
         
         DefaultListCellRenderer renderer = new DefaultListCellRenderer();
@@ -101,7 +101,6 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         exerciseModel.getTrackDatasets().add(dataset);
     }
     private void generateChart(int currentTrack, int currentAttempt, int[] points){
-        //XYSeriesCollection dataset = lessonPanel.createDataset(currentAttempt, points);
         exerciseModel.getTrackDatasets().get(currentTrack).removeSeries(0);
         XYSeries series = new XYSeries("Current Attempt");
         for (int i = 0; i < currentAttempt; ++i){
@@ -120,9 +119,11 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         int currentCharPos = exerciseModel.getCurrentCharPos();
         String[] words = exerciseModel.getWords();
         String[] standardizeWords = exerciseModel.getStandardizedWords();
+        StyledDocument ansDocument = lessonPanel.getAns().getStyledDocument();
         // check if current char typed in match current char in transcript
         if ((fb.getDocument().getText(0, fb.getDocument().getLength()) + str).equalsIgnoreCase(standardizeWords[currentWordPos].substring(0, currentCharPos + 1))){
             super.insertString(fb, offs, str, a);
+            lessonPanel.getHint().setText("");
             exerciseModel.setCurrentCharPos(++currentCharPos);
             if (exerciseModel.getCurrentExercise().getLevel() == 1){
                 if (!exerciseModel.getDict().contains(standardizeWords[currentWordPos].toLowerCase())){
@@ -130,7 +131,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                     StyleConstants.setForeground(keyWord, Color.gray.brighter());
                     if (!exerciseModel.getIsInserted()[currentWordPos]){
                         exerciseModel.getIsInserted()[currentWordPos] = true;
-                        lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getDocument().getLength(), words[currentWordPos] + " ", keyWord);
+                        ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     }
                 }
             }
@@ -139,54 +140,46 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 // check if that is the last word in the transcript
                 if (currentWordPos != standardizeWords.length){            
                     remove(fb, 0, fb.getDocument().getLength());
-                    lessonPanel.getAns().getStyledDocument().setCharacterAttributes(0, lessonPanel.getAns().getDocument().getLength(), new SimpleAttributeSet(), true);
+                    SimpleAttributeSet keyWord = new SimpleAttributeSet();
+                    StyleConstants.setForeground(keyWord, Color.green.brighter());
+                    ansDocument.setCharacterAttributes(0, lessonPanel.getAns().getDocument().getLength(), keyWord, true);
                     if (exerciseModel.getCurrentExercise().getLevel() == 1){
                         if (exerciseModel.getDict().contains(standardizeWords[currentWordPos].toLowerCase()))
-                            lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getStyledDocument().getLength(), words[currentWordPos] + " ", new SimpleAttributeSet());
+                            ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     }
                     else                         
-                        lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getStyledDocument().getLength(), words[currentWordPos] + " ", new SimpleAttributeSet());
+                        ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     exerciseModel.setCurrentWordPos(++currentWordPos);
                     exerciseModel.setCurrentCharPos(0);
-                    if (currentWordPos == standardizeWords.length){    
-                        exerciseModel.setTotalPoint(exerciseModel.getTotalPoint() + Integer.max(5*(21 - exerciseModel.getCurrentAttempt()), 0));
-                        exerciseModel.stopAudio();
-                        lessonPanel.getText().setEditable(false);
-                        lessonPanel.getText().requestFocus(false);
-                        // check if last track
-                        if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
-                            lessonPanel.getNextPanel().setVisible(true);
-                        else{
-                            String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
-                                            + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
-                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();
-                            JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
-                        }
-
-                    }
                                 
                 }                     
             }
         }  
-            else 
-                Toolkit.getDefaultToolkit().beep();
+        else{ 
+            if (!str.equals(" ")){
+                lessonPanel.getHint().setText("Incorrect!");
+                lessonPanel.getHint().setForeground(Color.red.brighter());
+            }
+            
+        }
     }
     public void replace(FilterBypass fb, int offs, int length, String str, AttributeSet a) throws BadLocationException{
         int currentWordPos = exerciseModel.getCurrentWordPos();
         int currentCharPos = exerciseModel.getCurrentCharPos();
         String[] words = exerciseModel.getWords();
-        String[] standardizeWords = exerciseModel.getStandardizedWords();   
+        String[] standardizeWords = exerciseModel.getStandardizedWords();  
+        StyledDocument ansDocument = lessonPanel.getAns().getStyledDocument();
         if ((fb.getDocument().getText(0, fb.getDocument().getLength()) + str).equalsIgnoreCase(standardizeWords[currentWordPos].substring(0, currentCharPos + 1))){
             super.replace(fb, offs,length, str, a);
+            lessonPanel.getHint().setText("");
             exerciseModel.setCurrentCharPos(++currentCharPos);
-            System.out.println("Current char: " + Integer.toString(exerciseModel.getCurrentCharPos()));
             if (exerciseModel.getCurrentExercise().getLevel() == 1){
                 if (!exerciseModel.getDict().contains(standardizeWords[currentWordPos].toLowerCase())){
                     SimpleAttributeSet keyWord = new SimpleAttributeSet();
                     StyleConstants.setForeground(keyWord, Color.gray.brighter());
                     if (!exerciseModel.getIsInserted()[currentWordPos]){
                         exerciseModel.getIsInserted()[currentWordPos] = true;
-                        lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getDocument().getLength(), words[currentWordPos] + " ", keyWord);
+                        ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     }
                 }
             }
@@ -196,38 +189,27 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 // check if that is the last word in the transcript
                 if (currentWordPos != standardizeWords.length){              
                     remove(fb, 0, fb.getDocument().getLength());
-                    lessonPanel.getAns().getStyledDocument().setCharacterAttributes(0, lessonPanel.getAns().getDocument().getLength(), new SimpleAttributeSet(), true);
+                    SimpleAttributeSet keyWord = new SimpleAttributeSet();
+                    StyleConstants.setForeground(keyWord, Color.green.brighter());
+                    ansDocument.setCharacterAttributes(0, lessonPanel.getAns().getDocument().getLength(), keyWord, true);
                     if (exerciseModel.getCurrentExercise().getLevel() == 1){
                         if (exerciseModel.getDict().contains(standardizeWords[currentWordPos].toLowerCase()))
-                            lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getStyledDocument().getLength(), words[currentWordPos] + " ", new SimpleAttributeSet());
+                            ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     }
                     else 
-                        lessonPanel.getAns().getStyledDocument().insertString(lessonPanel.getAns().getStyledDocument().getLength(), words[currentWordPos] + " ", new SimpleAttributeSet());
+                        ansDocument.insertString(ansDocument.getLength(), words[currentWordPos] + " ", keyWord);
                     exerciseModel.setCurrentWordPos(++currentWordPos);
                     exerciseModel.setCurrentCharPos(0);
-                    if (currentWordPos == standardizeWords.length){    
-                        exerciseModel.setTotalPoint(exerciseModel.getTotalPoint() + Integer.max(5*(21 - exerciseModel.getCurrentAttempt()), 0));
-                        exerciseModel.stopAudio();
-                        lessonPanel.getText().setEditable(false);
-                        lessonPanel.getText().requestFocus(false);
-                        // check if last track
-                        if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
-                            lessonPanel.getNextPanel().setVisible(true);
-                        else{
-                            String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
-                                            + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
-                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();
-                            JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
-                            lessonPanel.getTrackBox().setVisible(true);
-                        }
-
-                    }
                                 
                 }                     
             }
         }  
-            else 
-                Toolkit.getDefaultToolkit().beep();
+        else{ 
+            if (!str.equals(" ")){
+                lessonPanel.getHint().setText("Incorrect!");
+                lessonPanel.getHint().setForeground(Color.red.brighter());
+            }
+        }
 
 }
     public void remove(FilterBypass fb, int offset, int length) throws BadLocationException{
@@ -264,24 +246,29 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                             lessonPanel.getText().setEditable(false);
                             lessonPanel.getText().requestFocus(false);
                             exerciseModel.setCurrentPoint(0);
-                            for (int i = exerciseModel.getCurrentWordPos(); i < exerciseModel.getWords().length; ++i){
+                            String restOfTranscript = "";
+                            for (int i = exerciseModel.getCurrentWordPos(); i < exerciseModel.getWords().length; ++i)
+                                    restOfTranscript += exerciseModel.getWords()[i] + " ";
+                            if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
                                 try {
+                                SimpleAttributeSet keyWord = new SimpleAttributeSet();
+                                StyleConstants.setForeground(keyWord, Color.red.brighter());
                                 StyledDocument ansStyledDocument = lessonPanel.getAns().getStyledDocument();
-                                ansStyledDocument.insertString(ansStyledDocument.getLength(), exerciseModel.getWords()[i] + " ", new SimpleAttributeSet());
+                                ansStyledDocument.insertString(ansStyledDocument.getLength(), restOfTranscript, keyWord);
                                 } catch (BadLocationException ex) {
                                     Logger.getLogger(LessonController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
+                                
+                            exerciseModel.setCurrentWordPos(exerciseModel.getWords().length);
                             }
-                        // check if last track
-                            if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
-                                lessonPanel.getNextPanel().setVisible(true);
-                            else{
+                            if (exerciseModel.getCurrentTrack() == exerciseModel.getCurrentExercise().getListTrack().size() - 1){
                                 String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
                                             + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
-                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();                   
+                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();
                                 JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
-                                lessonPanel.getTrackBox().setVisible(true);
-                            } 
+                                lessonPanel.getbPlay().setEnabled(false);
+                            }
+                            
                                 
                         }
                         exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
@@ -298,6 +285,8 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         }
         else if (e.getSource() == lessonPanel.getbNext()){
             try {
+                if (exerciseModel.checkIsPlaying())
+                    exerciseModel.stopAudio();
                 exerciseModel.loadFile();
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
                 ex.printStackTrace();
@@ -321,12 +310,22 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 lessonPanel.getTrackLen().setText("00:0" + Integer.toString(exerciseModel.getTime()));
         }
         else if (e.getSource() == lessonPanel.getbListen()){
+            if (exerciseModel.checkIsPlaying())
+               return;
             exerciseModel.loadAudio();
-            lessonPanel.getbPlay().setEnabled(false);
         }
         else if (e.getSource() == lessonPanel.getbBack()){
             exerciseModel.stopAudio();
-            MainFrame.refresh(topicController.getTopicPanel());
+            if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1 || exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
+                int input = JOptionPane.showConfirmDialog(null, "Do you want to leave? All your current work will be deleted", "Select an Option",
+                                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (input == 0)
+                    MainFrame.refresh(topicController.getTopicPanel());
+            
+            }
+            else 
+                MainFrame.refresh(topicController.getTopicPanel());
+            
         }
         else{
             
@@ -347,11 +346,9 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         }
     }
 
-
     @Override
     public void update(LineEvent event) {
         if (event.getType() == LineEvent.Type.STOP){
-            
             lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));       
             exerciseModel.setPlaying(false);
             lessonPanel.getProgressBar().setValue(0);
@@ -376,51 +373,56 @@ public class LessonController extends DocumentFilter implements ActionListener, 
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
-            if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
-                if (exerciseModel.checkIsPlaying()){
-                    exerciseModel.stopAudio();
-                    //exerciseModel.getTimer().stop();
-                    lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
-
-                }
-                else{
-                    if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
-                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
-                        exerciseModel.loadAudio();                        
-                        exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
+            if (lessonPanel.getbPlay().isEnabled()){
+                if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
+                    if (exerciseModel.checkIsPlaying()){
+                        exerciseModel.stopAudio();
+                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
 
                     }
                     else{
-                        lessonPanel.getText().setEditable(false);
-                        lessonPanel.getText().requestFocus(false);
-                        exerciseModel.setCurrentPoint(0);
-                        for (int i = exerciseModel.getCurrentWordPos(); i < exerciseModel.getWords().length; ++i){
-                            try {
-                                StyledDocument ansStyledDocument = lessonPanel.getAns().getStyledDocument();
-                                ansStyledDocument.insertString(ansStyledDocument.getLength(), exerciseModel.getWords()[i] + " ", new SimpleAttributeSet());
-                            } catch (BadLocationException ex) {
-                                Logger.getLogger(LessonController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                        if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
+                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
+                            exerciseModel.loadAudio();                        
+                            exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
+
                         }
-                        // check if last track
-                        if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
-                            lessonPanel.getNextPanel().setVisible(true);
                         else{
-                            String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
+                            lessonPanel.getText().setEditable(false);
+                            lessonPanel.getText().requestFocus(false);
+                            exerciseModel.setCurrentPoint(0);
+                            StyledDocument ansStyledDocument = lessonPanel.getAns().getStyledDocument();                     
+                            String restOfTranscript = "";
+                            for (int i = exerciseModel.getCurrentWordPos(); i < exerciseModel.getWords().length; ++i)
+                                    restOfTranscript += exerciseModel.getWords()[i] + " ";
+                            if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
+                                    try {
+                                        SimpleAttributeSet keyWord = new SimpleAttributeSet();
+                                        StyleConstants.setForeground(keyWord, Color.red.brighter());
+                                        ansStyledDocument.insertString(ansStyledDocument.getLength(), restOfTranscript, keyWord);
+                                    } catch (BadLocationException ex) {
+                                        Logger.getLogger(LessonController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }                               
+                                exerciseModel.setCurrentWordPos(exerciseModel.getWords().length);
+                            }
+                            if (exerciseModel.getCurrentTrack() == exerciseModel.getCurrentExercise().getListTrack().size() - 1){
+                                String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
                                             + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
-                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();                   
-                            JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
-                            lessonPanel.getTrackBox().setVisible(true);
+                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();
+                                JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
+                                lessonPanel.getbPlay().setEnabled(false);
+                            }
+                                
+                            
                         }
                     }
-                    exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
-                    generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(), exerciseModel.getPoints());
+                        exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
+                        generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(), exerciseModel.getPoints());
 
+                
                 }
             }
-            else 
-                lessonPanel.getbPlay().setEnabled(false);
-        }    
+        }
     }
 
     @Override
@@ -430,36 +432,66 @@ public class LessonController extends DocumentFilter implements ActionListener, 
 
 
     @Override
-    public void insertUpdate(DocumentEvent e) {
-        int trackLen = exerciseModel.getCurrentExercise().getListTrack().size();
-        if (exerciseModel.getCurrentTrack() != (trackLen - 1) || exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
+    public void insertUpdate(DocumentEvent e) { 
             if (exerciseModel.getCurrentAttempt() != ExerciseModel.getMaxNumOfAttempts()){
                 exerciseModel.setCurrentPoint(exerciseModel.getCurrentPoint() + exerciseModel.getPointPerWord()); 
                 exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
+                for (int i = 0; i < exerciseModel.getPoints().length; ++i)
+                    System.out.println(exerciseModel.getPoints()[i]);
                 generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(), exerciseModel.getPoints());
                 if (exerciseModel.getCurrentWordPos() == exerciseModel.getStandardizedWords().length - 1){
+                    // set point for last attempt to be 100
                     exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = 100;
                     generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(), exerciseModel.getPoints());
+                    // add current track point to total point
+                    exerciseModel.setTotalPoint(exerciseModel.getTotalPoint() + Integer.max(5*(21 - exerciseModel.getCurrentAttempt()), 0));
+                    exerciseModel.stopAudio();
+                    lessonPanel.getText().setEditable(false);
+                    lessonPanel.getText().requestFocus(false);
+                    lessonPanel.getbPlay().setEnabled(false);
                     // check for last track
-                    if (exerciseModel.getCurrentTrack() == exerciseModel.getCurrentExercise().getListTrack().size() - 1){
+                    if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
+                        lessonPanel.getNextPanel().setVisible(true);
+                    else{
+                        // hit the last track
                         // code for creating History
+                        createHistory();
+                        // create result dialog
+                        String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
+                                            + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
+                                            + "Level: " + exerciseModel.getCurrentExercise().getLevel();
+                        JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
+                        lessonPanel.getTrackBox().setVisible(true);
+                        lessonPanel.getbPlay().setEnabled(false);
                         
-                    }
+                    }    
+                    
                 }
             }
-        } 
+            else if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
+                lessonPanel.getNextPanel().setVisible(true);
+            else{
+                lessonPanel.getTrackBox().setVisible(true);
+                createHistory();
+                
+            }
             
         
+    }
+    private void createHistory(){
+        History history = new History();
+        history.setLevel(exerciseModel.getCurrentExercise().getLevel());
+        history.setTopic(exerciseModel.getCurrentExercise().getTitle());
+        history.setScore(exerciseModel.getTotalPoint());
+        HistoryDAO.addHistory(history);
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void changedUpdate(DocumentEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void changedUpdate(DocumentEvent e) {      
     }
     
     

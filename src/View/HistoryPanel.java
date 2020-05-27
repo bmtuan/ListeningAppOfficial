@@ -36,14 +36,13 @@ public class HistoryPanel extends View implements ActionListener {
 
         historyTable1.setFont(new java.awt.Font("Arial", 0, 10));
         historyTable1.setModel(defaultTableModel);
-        defaultTableModel.addColumn("ID");
         defaultTableModel.addColumn("Level");
         defaultTableModel.addColumn("Title");
         defaultTableModel.addColumn("Score");
         defaultTableModel.addColumn("Date");
         HistoryModel historyModel = new HistoryModel();
         for (History x: historyModel.getListHistory()){
-            defaultTableModel.addRow(new  Object[]{x.getID(), x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
+            defaultTableModel.addRow(new  Object[]{x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
         }
         jScrollPane1.setViewportView(historyTable1);
         historyPage1.setPreferredSize(new Dimension(800,500));

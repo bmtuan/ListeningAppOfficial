@@ -1,6 +1,6 @@
+
 package src.Model;
 public class History {
-    private int ID;
     private int Level;
     private String Topic;
     private String date;
@@ -9,13 +9,7 @@ public class History {
     public History() {
     }
 
-    public int getID() {
-        return ID;
-    }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     public int getLevel() {
         return Level;
@@ -49,8 +43,7 @@ public class History {
         this.Score = Score;
     }
 
-    public History(int ID, int Level, String Topic, int Score, String date) {
-        this.ID = ID;
+    public History(int Level, String Topic, int Score, String date) {
         this.Level = Level;
         this.Topic = Topic;
         this.date = date;
@@ -59,7 +52,7 @@ public class History {
 
     @Override
     public String toString() {
-        return "History [ID=" + ID + ", Level=" + Level + ", Score=" + Score + ", Topic=" + Topic + ", date=" + date
+        return "History [" + "Level =" + Level +", Score = " + Score + ", Topic =" + Topic + ", date =" + date
                 + "]";
     }
     

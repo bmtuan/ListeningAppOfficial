@@ -37,12 +37,11 @@ public class HistoryDAO {
         }
     return list;
     }
-    public void addHistory(History history){
+    public static void addHistory(History history){
         Connection connection = JDBCConnection.getJDBCConnection();
         String sql = "INSERT INTO test.history(Level, Topic, Score, Date) VALUE(?,?,?,?)";
         try {
             PreparedStatement prepareStatement = connection.prepareStatement(sql);
-            prepareStatement.setInt(1, history.getID());
             prepareStatement.setInt(2, history.getLevel());
             prepareStatement.setString(3, history.getTopic());
             prepareStatement.setInt(4, history.getScore());
