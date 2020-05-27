@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class TopicPanel extends View{
     private JButton backButton;
+    private JButton homeButton;
     private JPanel lessonPanel;
     private LevelModel lm ;
     private JPanel[] panel;
@@ -22,6 +23,7 @@ public class TopicPanel extends View{
         lm = new LevelModel(level);
         int size = lm.getAllExerciseByLevel(level).size();
         backButton = new JButton("Back");
+        homeButton = new JButton("Home");
         lessonPanel = new JPanel();
         panel = new JPanel[size];
         lessonLabel = new JLabel[size];
@@ -29,6 +31,7 @@ public class TopicPanel extends View{
         transcript = new JLabel[size];
 
         backButton.setFont(new Font("Arial", 0, 14));
+        homeButton.setFont(new Font("Arial", 0, 14));
 
         lessonPanel.setMaximumSize(new Dimension(640, 480));
         lessonPanel.setMinimumSize(new Dimension(640, 480));
@@ -40,7 +43,6 @@ public class TopicPanel extends View{
             lessonLabel[i] = new JLabel();
             lessonLabel[i].setFont(new Font("Arial", 0, 20));
             lessonLabel[i].setText(lm.getAllExerciseByLevel(level).get(i).getTitle());
-
             information[i] =new JLabel();
             information[i].setFont(new Font("Arial", 0, 14));
             information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +"     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
@@ -83,7 +85,10 @@ public class TopicPanel extends View{
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
                     .addComponent(lessonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
@@ -91,8 +96,10 @@ public class TopicPanel extends View{
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(backButton, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(homeButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lessonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -108,6 +115,14 @@ public class TopicPanel extends View{
 
     public void setLessonLabel(JLabel[] lessonLabel) {
         this.lessonLabel = lessonLabel;
+    }
+
+    public JButton getHomeButton() {
+        return homeButton;
+    }
+
+    public void setHomeButton(JButton homeButton) {
+        this.homeButton = homeButton;
     }
 
 }

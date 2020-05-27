@@ -29,6 +29,7 @@ public class TopicController implements ActionListener, MouseListener {
 
     public TopicController(LevelModel levelModel, TopicPanel topicPanel) {
         topicPanel.getBackButton().addActionListener(this);
+        topicPanel.getHomeButton().addActionListener(this);
         this.levelModel = levelModel;
         this.topicPanel = topicPanel;
         for (int i = 0; i < topicPanel.getLessonLabel().length; i++) {
@@ -39,9 +40,15 @@ public class TopicController implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        if (e.getSource() =="Back"){
         topicPanel.setVisible(false);
         LevelController lc = new LevelController(new LevelPanel());
         MainFrame.refresh(lc.getLevelPanel());
+        }
+        else{
+            topicPanel.setVisible(false);
+            MainFrame.getInstance().add(MenuController.getInstance().getView());
+        }
     }
 
     @Override

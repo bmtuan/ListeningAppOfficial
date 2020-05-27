@@ -42,10 +42,10 @@ public class HistoryDAO {
         String sql = "INSERT INTO test.history(Level, Topic, Score, Date) VALUE(?,?,?,?)";
         try {
             PreparedStatement prepareStatement = connection.prepareStatement(sql);
-            prepareStatement.setInt(2, history.getLevel());
-            prepareStatement.setString(3, history.getTopic());
-            prepareStatement.setInt(4, history.getScore());
-            prepareStatement.setString(5, history.getDate());
+            prepareStatement.setInt(1, history.getLevel());
+            prepareStatement.setString(2, history.getTopic());
+            prepareStatement.setInt(3, history.getScore());
+            prepareStatement.setString(4, history.getDate());
             int rs = prepareStatement.executeUpdate();
             System.out.println(rs);
         } catch (SQLException ex) {

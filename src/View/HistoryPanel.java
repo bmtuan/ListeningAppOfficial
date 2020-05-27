@@ -32,17 +32,21 @@ public class HistoryPanel extends View implements ActionListener {
         backButton.addActionListener(this);
         historyTabbedPane.setTabPlacement(JTabbedPane.BOTTOM);
 
-        jScrollPane1.setFont(new java.awt.Font("Arial", 0, 10));
+        jScrollPane1.setFont(new java.awt.Font("Arial", 0, 14));
 
-        historyTable1.setFont(new java.awt.Font("Arial", 0, 10));
+        historyTable1.setFont(new java.awt.Font("Arial", 0, 14));
         historyTable1.setModel(defaultTableModel);
         defaultTableModel.addColumn("Level");
         defaultTableModel.addColumn("Title");
         defaultTableModel.addColumn("Score");
         defaultTableModel.addColumn("Date");
+        historyTable1.getColumnModel().getColumn(0).setResizable(false);
+        historyTable1.getColumnModel().getColumn(1).setResizable(false);
+        historyTable1.getColumnModel().getColumn(2).setResizable(false);
+        historyTable1.getColumnModel().getColumn(3).setResizable(false);
         HistoryModel historyModel = new HistoryModel();
         for (History x: historyModel.getListHistory()){
-            defaultTableModel.addRow(new  Object[]{x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
+            defaultTableModel.addRow(new  Object[]{ x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
         }
         jScrollPane1.setViewportView(historyTable1);
         historyPage1.setPreferredSize(new Dimension(800,500));
@@ -63,7 +67,9 @@ public class HistoryPanel extends View implements ActionListener {
                 new Object[][] { },
                 new String[] { "ID", "Level", "Topic", "Score", "Date" }) {
             Class[] types = new Class[] { Integer.class, Integer.class, String.class, Integer.class, Date.class };
-
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
@@ -96,6 +102,10 @@ public class HistoryPanel extends View implements ActionListener {
                         .addGap(10, 10, 10)
                         .addComponent(historyTabbedPane, GroupLayout.PREFERRED_SIZE, 480, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(60, Short.MAX_VALUE)));
+    }
+
+    public boolean isCellEditable(int row, int column) {
+        return false;    
     }
 
     public JButton getBackButton() {
