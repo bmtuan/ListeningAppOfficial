@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.Date;
 import src.Model.*;
 import src.Controller.MenuController;
@@ -49,8 +51,12 @@ public class HistoryPanel extends View implements ActionListener {
 
         // historyTable1.setSize(100, 100);
         HistoryModel historyModel = new HistoryModel();
+        String pattern = "HH:mm EEEEE MMMMM";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         for (History x: historyModel.getListHistory()){
-            defaultTableModel.addRow(new  Object[]{ x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
+            Date out = Date.from(x.getDate().atZone(ZoneId.systemDefault()).toInstant());
+            String date = simpleDateFormat.format(out);
+            defaultTableModel.addRow(new  Object[]{ x.getLevel(), x.getTopic(), x.getScore(), date});
         }
         for (int i = 0 ; i < historyTable1.getColumnModel().getColumnCount(); i++){
             DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
