@@ -1,6 +1,7 @@
 package src.View;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Dimension;
@@ -30,16 +31,32 @@ public class HistoryPanel extends View implements ActionListener {
 
         jScrollPane1.setFont(new java.awt.Font("Arial", 0, 14));
 
-        historyTable1.setFont(new java.awt.Font("Arial", 0, 14));
+        historyTable1.setFont(new java.awt.Font("Arial", 0, 15));
         historyTable1.setModel(defaultTableModel);
         defaultTableModel.addColumn("Level");
+
         defaultTableModel.addColumn("Title");
+
         defaultTableModel.addColumn("Score");
+
         defaultTableModel.addColumn("Date");
-        historyTable1.setSize(100, 100);
+        if (historyTable1.getColumnModel().getColumnCount() > 0) {
+            historyTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+            historyTable1.getColumnModel().getColumn(1).setPreferredWidth(500);
+            historyTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
+            historyTable1.getColumnModel().getColumn(3).setPreferredWidth(200);
+        }
+
+        // historyTable1.setSize(100, 100);
         HistoryModel historyModel = new HistoryModel();
         for (History x: historyModel.getListHistory()){
             defaultTableModel.addRow(new  Object[]{ x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
+        }
+        for (int i = 0 ; i < historyTable1.getColumnModel().getColumnCount(); i++){
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(SwingConstants.CENTER);
+            historyTable1.getColumnModel().getColumn(i).setCellRenderer(renderer);
+        
         }
         defaultTableModel.isCellEditable(defaultTableModel.getRowCount(), defaultTableModel.getColumnCount());
         jScrollPane1.setViewportView(historyTable1);

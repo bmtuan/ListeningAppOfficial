@@ -40,33 +40,35 @@ public class LevelPanel extends View implements ActionListener {
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout
-                .createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup().addGap(250, 250, 250)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(chooseLevel, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                        .addComponent(level_1Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(level_2Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(level_3Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup().addGap(80, 80, 80).addComponent(backButton,
-                                GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(250, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(10, 10, 10)
-                        .addComponent(backButton, GroupLayout.PREFERRED_SIZE,40, GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(chooseLevel, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addComponent(level_1Button, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(level_2Button, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(level_3Button, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chooseLevel, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(level_1Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(level_2Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(level_3Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(chooseLevel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(level_1Button, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(level_2Button, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(level_3Button, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
     }
 
     public JButton getBackButton() {
