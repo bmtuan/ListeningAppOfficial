@@ -49,7 +49,7 @@ public class TopicPanel extends View{
 
             transcript[i] = new JLabel();
             transcript[i].setFont(new Font("Arial", 0, 14));
-            transcript[i].setText("Transcript: ");
+            transcript[i].setText(lm.getAllExerciseByLevel(level).get(i).getDescription());
             transcript[i].setMaximumSize(new Dimension(640, 50));
             transcript[i].setMinimumSize(new Dimension(640, 50));
             transcript[i].setPreferredSize(new Dimension(640, 50));
@@ -83,7 +83,7 @@ public class TopicPanel extends View{
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(0, 0, 40)
                         .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
                     .addComponent(lessonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(80, Short.MAX_VALUE))

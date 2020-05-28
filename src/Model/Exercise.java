@@ -8,6 +8,7 @@ public class Exercise {
 
     private String title;
     private int level;
+    private String Description;
     private List<Track> listTrack;
     private int time, highScore;
     public Exercise(){
@@ -65,6 +66,14 @@ public class Exercise {
     @Override
     public String toString() {
         return "Exercise [highScore=" + highScore + ", level=" + level + ", time=" + time + ", title=" + title + "]";
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 
 

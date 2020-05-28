@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.*;
 import java.sql.SQLException;
 import java.awt.*;
-
+import java.time.*;
 import javax.swing.JLabel;
 
 import src.View.*;
@@ -68,6 +69,7 @@ public class TopicController implements ActionListener, MouseListener {
             ex = ExerciseDAO.getExerciseByTitle(title, level);
             // ex = ExerciseDAO.getExerciseByTitle("Go to bed early is better for us", 1);
             ExerciseModel em = new ExerciseModel(ex);
+            em.setStartTime(LocalDateTime.now());
             LessonPanel lp = new LessonPanel();
             int trackLen = em.getCurrentExercise().getListTrack().get(em.getCurrentTrack()).getTime();
             if (trackLen > 9)

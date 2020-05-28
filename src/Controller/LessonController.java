@@ -455,6 +455,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                     else{
                         // hit the last track
                         // code for creating History
+                        System.out.println("reached here");
                         createHistory();
                         // create result dialog
                         String message = "Score: " + Integer.toString(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1)) + "/100" + "\n"
@@ -472,6 +473,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 lessonPanel.getNextPanel().setVisible(true);
             else{
                 lessonPanel.getTrackBox().setVisible(true);
+                System.out.println("0 point");
                 createHistory();
                 
             }
@@ -480,9 +482,13 @@ public class LessonController extends DocumentFilter implements ActionListener, 
     }
     private void createHistory(){
         History history = new History();
+        history.setDate(exerciseModel.getStartTime());
+        System.out.println(exerciseModel.getStartTime());
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint());
+        System.out.println("Fuck'in wow shit");
+        System.out.println(history.getDate());
         HistoryDAO.addHistory(history);
     }
 

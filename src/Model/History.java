@@ -1,9 +1,11 @@
 
 package src.Model;
+import java.sql.*;
+import java.time.*;
 public class History {
     private int Level;
     private String Topic;
-    private String date;
+    private LocalDateTime date;
     private int Score;
 
     public History() {
@@ -27,11 +29,11 @@ public class History {
         this.Topic = Topic;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -43,7 +45,7 @@ public class History {
         this.Score = Score;
     }
 
-    public History(int Level, String Topic, int Score, String date) {
+    public History(int Level, String Topic, int Score, LocalDateTime date) {
         this.Level = Level;
         this.Topic = Topic;
         this.date = date;

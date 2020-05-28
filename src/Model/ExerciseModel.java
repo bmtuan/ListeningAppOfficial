@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.util.Date;
+import java.time.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,8 +48,7 @@ public class ExerciseModel {
     private Clip clip; 
     private Long currentFrame;
     AbstractDocument textDocument;
-    private Date startTime;
-
+    private LocalDateTime startTime;
 
     private int time, currentSec;
     private int percentPerSec;
@@ -111,11 +110,11 @@ public class ExerciseModel {
         this.trackDatasets = trackDatasets;
     }
     
-    public Date getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
     

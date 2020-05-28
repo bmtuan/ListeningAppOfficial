@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package src.DAO;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.*;
 import java.util.ArrayList;
 import src.Model.History;
 import java.util.logging.Level;
@@ -29,7 +27,7 @@ public class HistoryDAO {
             history.setLevel(rs.getInt("Level"));
             history.setTopic(rs.getString("Topic"));
             history.setScore(rs.getInt("Score"));
-            history.setDate(rs.getString("Date"));
+            history.setDate(rs.getTimestamp("Date").toLocalDateTime());
             list.add(history);
         }
     } catch (SQLException e){
@@ -45,7 +43,7 @@ public class HistoryDAO {
             prepareStatement.setInt(1, history.getLevel());
             prepareStatement.setString(2, history.getTopic());
             prepareStatement.setInt(3, history.getScore());
-            prepareStatement.setString(4, history.getDate());
+            prepareStatement.setObject(4, history.getDate());
             int rs = prepareStatement.executeUpdate();
             System.out.println(rs);
         } catch (SQLException ex) {

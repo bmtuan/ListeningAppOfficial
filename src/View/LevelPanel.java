@@ -57,7 +57,7 @@ public class LevelPanel extends View implements ActionListener {
                 .addContainerGap(250, Short.MAX_VALUE)));
         layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup().addGap(10, 10, 10)
-                        .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backButton, GroupLayout.PREFERRED_SIZE,40, GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(chooseLevel, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
