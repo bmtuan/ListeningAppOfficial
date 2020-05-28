@@ -96,7 +96,7 @@ public class TopicController implements ActionListener, MouseListener {
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
-        x.setForeground(Color.blue.brighter());
+        x.setForeground(Color.green.brighter());
         topicPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     @Override

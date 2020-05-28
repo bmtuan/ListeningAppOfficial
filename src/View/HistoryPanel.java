@@ -12,22 +12,18 @@ import src.Controller.MenuController;
 public class HistoryPanel extends View implements ActionListener {
     private JButton backButton;
     private JPanel historyPage1;
-    private JPanel historyPage2;
     private JTabbedPane historyTabbedPane;
     private JTable historyTable1;
-    private JTable historyTable2;
+
     private JScrollPane jScrollPane1;
-    private JScrollPane jScrollPane2;
+
 
     public HistoryPanel() {
-        DefaultTableModel defaultTableModel = new DefaultTableModel();
+        tableModel defaultTableModel = new tableModel();
         historyTabbedPane = new JTabbedPane();
         historyPage1 = new JPanel();
         jScrollPane1 = new JScrollPane();
         historyTable1 = new JTable();
-        historyPage2 = new JPanel();
-        jScrollPane2 = new JScrollPane();
-        historyTable2 = new JTable();
         backButton = new JButton();
         backButton.addActionListener(this);
         historyTabbedPane.setTabPlacement(JTabbedPane.BOTTOM);
@@ -40,14 +36,12 @@ public class HistoryPanel extends View implements ActionListener {
         defaultTableModel.addColumn("Title");
         defaultTableModel.addColumn("Score");
         defaultTableModel.addColumn("Date");
-        historyTable1.getColumnModel().getColumn(0).setResizable(false);
-        historyTable1.getColumnModel().getColumn(1).setResizable(false);
-        historyTable1.getColumnModel().getColumn(2).setResizable(false);
-        historyTable1.getColumnModel().getColumn(3).setResizable(false);
+        historyTable1.setSize(100, 100);
         HistoryModel historyModel = new HistoryModel();
         for (History x: historyModel.getListHistory()){
             defaultTableModel.addRow(new  Object[]{ x.getLevel(), x.getTopic(), x.getScore(), x.getDate()});
         }
+        defaultTableModel.isCellEditable(defaultTableModel.getRowCount(), defaultTableModel.getColumnCount());
         jScrollPane1.setViewportView(historyTable1);
         historyPage1.setPreferredSize(new Dimension(800,500));
         GroupLayout historyPage1Layout = new GroupLayout(historyPage1);
@@ -60,30 +54,30 @@ public class HistoryPanel extends View implements ActionListener {
 
         historyTabbedPane.addTab("Page 1", historyPage1);
 
-        jScrollPane2.setFont(new java.awt.Font("Arial", 0, 10));
+        // jScrollPane2.setFont(new java.awt.Font("Arial", 0, 10));
 
-        historyTable2.setFont(new java.awt.Font("Arial", 0, 10));
-        historyTable2.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] { },
-                new String[] { "ID", "Level", "Topic", "Score", "Date" }) {
-            Class[] types = new Class[] { Integer.class, Integer.class, String.class, Integer.class, Date.class };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(historyTable2);
+        // historyTable2.setFont(new java.awt.Font("Arial", 0, 10));
+        // historyTable2.setModel(new javax.swing.table.DefaultTableModel(
+        //         new Object[][] { },
+        //         new String[] { "ID", "Level", "Topic", "Score", "Date" }) {
+        //     Class[] types = new Class[] { Integer.class, Integer.class, String.class, Integer.class, Date.class };
+        //     boolean[] canEdit = new boolean [] {
+        //         false, false, false, false, false
+        //     };
+        //     public Class getColumnClass(int columnIndex) {
+        //         return types[columnIndex];
+        //     }
+        // });
+        // jScrollPane2.setViewportView(historyTable2);
 
-        GroupLayout historyPage2Layout = new GroupLayout(historyPage2);
-        historyPage2.setLayout(historyPage2Layout);
-        historyPage2Layout.setHorizontalGroup(historyPage2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE));
-        historyPage2Layout.setVerticalGroup(historyPage2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE));
+        // GroupLayout historyPage2Layout = new GroupLayout(historyPage2);
+        // historyPage2.setLayout(historyPage2Layout);
+        // historyPage2Layout.setHorizontalGroup(historyPage2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        //         .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE));
+        // historyPage2Layout.setVerticalGroup(historyPage2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        //         .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE));
 
-        historyTabbedPane.addTab("Page 2", historyPage2);
+        // historyTabbedPane.addTab("Page 2", historyPage2);
 
         backButton.setFont(new java.awt.Font("Arial", 0, 14));
         backButton.setText("Back");
@@ -124,9 +118,9 @@ public class HistoryPanel extends View implements ActionListener {
     }
 
 
-    public JTable getHistoryTable2() {
-        return historyTable2;
-    }
+    // public JTable getHistoryTable2() {
+    //     return historyTable2;
+    // }
 
 
 }

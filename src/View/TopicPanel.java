@@ -2,9 +2,7 @@ package src.View;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-
 import src.Model.LevelModel;
-
 import java.awt.*;
 
 public class TopicPanel extends View{
@@ -17,7 +15,6 @@ public class TopicPanel extends View{
     private JLabel[] information;
     private JLabel[] transcript;
     private JSeparator[] separators = new JSeparator[2];
-
 
     public TopicPanel(int level){
         lm = new LevelModel(level);
@@ -67,7 +64,6 @@ public class TopicPanel extends View{
             panel[i].add(lessonLabel[i]);
             panel[i].add(information[i]);
             panel[i].add(transcript[i]);
-
         }
 
         for(int i=0 ; i<size ; i++){
