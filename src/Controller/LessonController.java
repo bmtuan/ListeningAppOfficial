@@ -3,7 +3,6 @@ package src.Controller;
 import src.View.LessonPanel;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -473,7 +472,6 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 lessonPanel.getNextPanel().setVisible(true);
             else{
                 lessonPanel.getTrackBox().setVisible(true);
-                System.out.println("0 point");
                 createHistory();
                 
             }
