@@ -14,6 +14,7 @@ import src.Model.History;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.time.ZoneId;
+
 /**
  *
  * @author Admin
@@ -32,8 +33,10 @@ public class HistoryDAO {
                 history.setTopic(rs.getString("Topic"));
                 history.setScore(rs.getInt("Score"));
 
-                // LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-                LocalDateTime time = LocalDateTime.ofInstant(rs.getTimestamp("Date").toInstant(), ZoneId.systemDefault());
+                // LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(),
+                // ZoneId.systemDefault());
+                LocalDateTime time = LocalDateTime.ofInstant(rs.getTimestamp("Date").toInstant(),
+                        ZoneId.systemDefault());
                 history.setDate(time);
                 list.add(history);
             }
@@ -58,17 +61,32 @@ public class HistoryDAO {
             Logger.getLogger(HistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     // public static void main(String[] args) {
+    // try {
+    // for (History x : HistoryDAO.getAllHistory()){
+    // System.out.println(x.toString());
+    // }
+    // } catch (SQLException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    // Date in = new Date();
+    // LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(),
+    // ZoneId.systemDefault());
+    // Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+    // }
+    // public static void main(String[] args) {
+    //     String sql = "UPDATE exercise SET exercise.HighScore = 50 WHERE exercise.Title = \"Go to bed early is better for us\" ";
+    //     Connection connection = JDBCConnection.getJDBCConnection();
     //     try {
-    //         for (History x : HistoryDAO.getAllHistory()){
-    //         System.out.println(x.toString());
-    //         }
+    //         Statement prepareStatement1 = connection.createStatement();
+    //         int rs = prepareStatement1.executeUpdate(sql);
+    //         System.out.println(sql);
+    //         System.out.println(rs);
     //     } catch (SQLException e) {
     //         // TODO Auto-generated catch block
     //         e.printStackTrace();
     //     }
-    //     Date in = new Date();
-    //     LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
-    //     Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
     // }
 }

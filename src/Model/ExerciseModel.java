@@ -339,15 +339,15 @@ public class ExerciseModel {
 
     }
 
-    public Exercise getExcerciseByTitle(String title, int level) {
-        try {
-            return ExerciseDAO.getExerciseByTitle(title, level);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        }
-    }
+    // public Exercise getExcerciseByTitle(String title, int level) {
+    //     try {
+    //         return ExerciseDAO.getExerciseByTitle(title, level);
+    //     } catch (SQLException e) {
+    //         // TODO Auto-generated catch block
+    //         e.printStackTrace();
+    //         return null;
+    //     }
+    // }
     public void setCurrentExercise(Exercise currentExercise) {
         this.currentExercise = currentExercise;
     }

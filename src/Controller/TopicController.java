@@ -42,6 +42,7 @@ public class TopicController implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if (e.getSource() =="Back"){
+            
         topicPanel.setVisible(false);
         LevelController lc = new LevelController(new LevelPanel());
         MainFrame.refresh(lc.getLevelPanel());
@@ -51,7 +52,6 @@ public class TopicController implements ActionListener, MouseListener {
             MainFrame.getInstance().add(MenuController.getInstance().getView());
         }
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -62,6 +62,8 @@ public class TopicController implements ActionListener, MouseListener {
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
+        x.setForeground(Color.black);
+        topicPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         String title = x.getText();
         int level = levelModel.getLevel();
         Exercise ex;
