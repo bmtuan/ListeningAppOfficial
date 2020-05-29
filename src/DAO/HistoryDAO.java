@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import src.Model.History;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.ImageIcon;
+
 import java.time.ZoneId;
 
 /**
@@ -101,6 +104,5 @@ public class HistoryDAO {
     //         // TODO Auto-generated catch block
     //         e.printStackTrace();
     //     }
-
     // }
 }

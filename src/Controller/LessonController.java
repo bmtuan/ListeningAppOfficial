@@ -446,8 +446,8 @@ public class LessonController extends DocumentFilter
         if (exerciseModel.getCurrentAttempt() != ExerciseModel.getMaxNumOfAttempts()) {
             exerciseModel.setCurrentPoint(exerciseModel.getCurrentPoint() + exerciseModel.getPointPerWord());
             exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
-            for (int i = 0; i < exerciseModel.getPoints().length; ++i)
-                System.out.println(exerciseModel.getPoints()[i]);
+            // for (int i = 0; i < exerciseModel.getPoints().length; ++i)
+            //     System.out.println(exerciseModel.getPoints()[i]);
             generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(),
                     exerciseModel.getPoints());
             if (exerciseModel.getCurrentWordPos() == exerciseModel.getStandardizedWords().length - 1) {
@@ -468,17 +468,17 @@ public class LessonController extends DocumentFilter
                 else {
                     // hit the last track
                     // code for creating History
-                    System.out.println("reached here");
+                    // System.out.println("reached here");
                     createHistory();
                     // create result dialog
                     String message = "Score: "
                             + Integer.toString(exerciseModel.getTotalPoint() / (exerciseModel.getCurrentTrack() + 1))
                             + "/100" + "\n" + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
                             + "Level: " + exerciseModel.getCurrentExercise().getLevel();
-                    JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
+                    ImageIcon icon1 = new ImageIcon("Image\\inform.jpg");
+                    JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, icon1);
                     lessonPanel.getTrackBox().setVisible(true);
                     lessonPanel.getbPlay().setEnabled(false);
-
                 }
 
             }
@@ -487,7 +487,6 @@ public class LessonController extends DocumentFilter
         else {
             lessonPanel.getTrackBox().setVisible(true);
             createHistory();
-
         }
 
     }
