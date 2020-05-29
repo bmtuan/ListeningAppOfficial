@@ -15,7 +15,6 @@ public class LevelController implements ActionListener {
     public void setLevelPanel(LevelPanel levelPanel) {
         this.levelPanel = levelPanel;
     }
-
     public LevelController(LevelPanel lp) {
         lp.getLevel_1Button().addActionListener(this);
         lp.getLevel_2Button().addActionListener(this);

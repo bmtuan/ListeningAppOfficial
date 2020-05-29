@@ -38,7 +38,7 @@ public class ExerciseModel {
     private String transcript;
     private String[] words, standardizedWords;
     private boolean[] isInserted;
-    private static final String dictPath = "Dictionary.txt";
+    private static final String dictPath = "Data\\Dictionary.txt";
     private static Set<String> dict = new HashSet<>();
 
     private int currentWordPos;
@@ -83,7 +83,7 @@ public class ExerciseModel {
         System.out.println("Current track: " + Integer.toString(currentTrack));
         String audioPath = this.currentExercise.getListTrack().get(currentTrack).getAudio();
         
-        audioInputStream = AudioSystem.getAudioInputStream(new File(audioPath).getAbsoluteFile());
+        audioInputStream = AudioSystem.getAudioInputStream(new File(audioPath));
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         transcript = currentExercise.getListTrack().get(currentTrack).getTranscript();
@@ -348,7 +348,6 @@ public class ExerciseModel {
             return null;
         }
     }
-
     public void setCurrentExercise(Exercise currentExercise) {
         this.currentExercise = currentExercise;
     }

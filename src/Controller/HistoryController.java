@@ -8,7 +8,6 @@ public class HistoryController {
     public HistoryController(HistoryModel historyModel, HistoryPanel historyPanel) {
         this.historyModel = historyModel;
         this.historyPanel = historyPanel;
-
     }
     public HistoryPanel getHistoryPanel() {
         return historyPanel;
@@ -18,5 +17,4 @@ public class HistoryController {
         return historyModel;
     }
 
-    
 }
