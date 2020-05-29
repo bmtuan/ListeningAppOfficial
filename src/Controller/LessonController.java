@@ -495,7 +495,7 @@ public class LessonController extends DocumentFilter
     private void createHistory() {
         History history = new History();
         history.setDate(exerciseModel.getStartTime());
-        System.out.println(exerciseModel.getStartTime());
+        // System.out.println(exerciseModel.getStartTime());
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint());
@@ -510,11 +510,19 @@ public class LessonController extends DocumentFilter
             prepareStatement = connection.prepareStatement(sql);
             statement = connection.createStatement();
             ResultSet rs = prepareStatement.executeQuery();
+            // System.out.println(history.getScore());
+            // System.out.println(rs.getInt(0));
             while (rs.next()){
-                if (history.getScore() > rs.getInt("HighScore")){
-                    statement.executeUpdate(sql1);
+                if (rs.getInt("HighScore") < history.getScore()){
+                statement.executeUpdate(sql1);
                 }
             }
+            // while (rs.next()){
+            //     if (history.getScore() > rs.getInt("HighScore")){
+            //         statement.executeUpdate(sql1);
+            //         System.out.println(rs.getInt("HighScore"));
+            //     }
+            // }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

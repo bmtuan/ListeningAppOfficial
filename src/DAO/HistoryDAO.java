@@ -77,16 +77,30 @@ public class HistoryDAO {
     // Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
     // }
     // public static void main(String[] args) {
-    //     String sql = "UPDATE exercise SET exercise.HighScore = 50 WHERE exercise.Title = \"Go to bed early is better for us\" ";
-    //     Connection connection = JDBCConnection.getJDBCConnection();
+        // String sql = "UPDATE exercise SET exercise.HighScore = 100 WHERE
+        // exercise.Title = \"Go to bed early is better for us\" ";
+        // String sql = "SELECT exercise.HighScore FROM test.exercise WHERE exercise.Title = \"Go to bed early is better for us\" ";
+        // Connection connection = JDBCConnection.getJDBCConnection();
+        // try {
+        // Statement prepareStatement1 = connection.createStatement();
+        // int rs = prepareStatement1.executeUpdate(sql);
+        // System.out.println(sql);
+        // System.out.println(rs);
+        // } catch (SQLException e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
+    //     PreparedStatement prepareStatement;
     //     try {
-    //         Statement prepareStatement1 = connection.createStatement();
-    //         int rs = prepareStatement1.executeUpdate(sql);
-    //         System.out.println(sql);
-    //         System.out.println(rs);
+    //         prepareStatement = connection.prepareStatement(sql);
+    //         ResultSet rs = prepareStatement.executeQuery();
+    //         while(rs.next()){
+    //         System.out.println(rs.getInt("HighScore"));
+    //         }
     //     } catch (SQLException e) {
     //         // TODO Auto-generated catch block
     //         e.printStackTrace();
     //     }
+
     // }
 }
