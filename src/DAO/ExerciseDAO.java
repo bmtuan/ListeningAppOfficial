@@ -58,7 +58,7 @@ public class ExerciseDAO {
         }
         // public static void main(String[] args) {
         //     try {
-        //         for (Exercise x : ExerciseDAO.getAllExerciseByLv(1)) {
+        //         for (Exercise x : ExerciseDAO.getAllExerciseByLv(3)) {
         //             System.out.println(x.toString());
         //         }
         //     } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class ExerciseDAO {
         // public static void main(String[] args) {
         //     Exercise Ex;
         //     try {
-        //         Ex = ExerciseDAO.getExerciseByTitle("Go to bed early is better for us", 1);
+        //         Ex = ExerciseDAO.getExerciseByTitle("Exercise pill could replace exercising", 3);
         //         for (Track x: Ex.getListTrack() ){
         //             System.out.println(x.toString());
         //         }

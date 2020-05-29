@@ -17,7 +17,6 @@ public class HistoryPanel extends View implements ActionListener {
     private JPanel historyPage1;
     private JTabbedPane historyTabbedPane;
     private JTable historyTable1;
-
     private JScrollPane jScrollPane1;
 
 
