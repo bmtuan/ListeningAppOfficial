@@ -470,16 +470,41 @@ public class LessonController extends DocumentFilter
                     // code for creating History
                     // System.out.println("reached here");
                     createHistory();
+                    int point = exerciseModel.getTotalPoint() / (exerciseModel.getCurrentTrack() + 1);
                     // create result dialog
                     String message = "Score: "
-                            + Integer.toString(exerciseModel.getTotalPoint() / (exerciseModel.getCurrentTrack() + 1))
+                            + point
                             + "/100" + "\n" + "Title: " + exerciseModel.getCurrentExercise().getTitle() + "\n"
                             + "Level: " + exerciseModel.getCurrentExercise().getLevel();
-                    ImageIcon icon1 = new ImageIcon("Image\\inform.jpg");
-                    JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, icon1);
-                    lessonPanel.getTrackBox().setVisible(true);
-                    lessonPanel.getbPlay().setEnabled(false);
-                }
+                    JOptionPane.showMessageDialog(lessonPanel, message, "Result", 1, null);
+        //                     String sql = "SELECT exercise.HighScore FROM test.exercise WHERE exercise.Title = " + "\"" + exerciseModel.getCurrentExercise().getTitle()
+        //         + "\"";
+        // String sql1 = "UPDATE exercise SET exercise.HighScore =" + point +" WHERE exercise.Title = " + "\"" + exerciseModel.getCurrentExercise().getTitle()
+        // + "\"";
+        // Connection connection = JDBCConnection.getJDBCConnection();
+        // PreparedStatement prepareStatement;
+        // Statement statement;
+        // try {
+        //     prepareStatement = connection.prepareStatement(sql);
+        //     statement = connection.createStatement();
+        //     ResultSet rs = prepareStatement.executeQuery();
+        //     // System.out.println(history.getScore());
+        //     // System.out.println(rs.getInt(0));
+        //     while (rs.next()){
+        //         if (rs.getInt("HighScore") < point){
+        //         statement.executeUpdate(sql1);
+        //         }
+        //     }
+        //     while (rs.next()){
+        //         if (point > rs.getInt("HighScore")){
+        //             statement.executeUpdate(sql1);
+        //             System.out.println(rs.getInt("HighScore"));
+        //         }
+        //      }
+        // } catch (SQLException e1) {
+        //     // TODO Auto-generated catch block
+        //     e1.printStackTrace();
+        // }
 
             }
         } else if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
@@ -489,6 +514,7 @@ public class LessonController extends DocumentFilter
             createHistory();
         }
 
+        }
     }
 
     private void createHistory() {
@@ -516,12 +542,12 @@ public class LessonController extends DocumentFilter
                 statement.executeUpdate(sql1);
                 }
             }
-            // while (rs.next()){
-            //     if (history.getScore() > rs.getInt("HighScore")){
-            //         statement.executeUpdate(sql1);
-            //         System.out.println(rs.getInt("HighScore"));
-            //     }
-            // }
+            while (rs.next()){
+                if (history.getScore() > rs.getInt("HighScore")){
+                    statement.executeUpdate(sql1);
+                    System.out.println(rs.getInt("HighScore"));
+                }
+             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
