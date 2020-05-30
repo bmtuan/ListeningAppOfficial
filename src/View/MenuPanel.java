@@ -1,4 +1,6 @@
 package src.View;
+import java.awt.Color;
+
 import javax.swing.*;
 
 public class MenuPanel extends View{
