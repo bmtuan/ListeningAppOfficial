@@ -1,4 +1,5 @@
 package src.View;
+
 import javax.swing.*;
 
 public class MenuPanel extends View{
@@ -7,7 +8,9 @@ public class MenuPanel extends View{
     private JButton helpButton;
     private JButton historyButton;
     private JButton startButton;
+
     public MenuPanel(){
+        
         startButton = new JButton();
         helpButton = new JButton();
         exitButton = new JButton();
@@ -88,5 +91,4 @@ public class MenuPanel extends View{
     public void setStartButton(JButton startButton) {
         this.startButton = startButton;
     }
-    
 }

@@ -90,7 +90,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         lessonPanel.getTrackBox().setVisible(false);
 
     }
-    public void fillProgressBar(){
+    private void fillProgressBar(){
         int currentProgress = exerciseModel.getCurrentProgress();
         exerciseModel.setCurrentProgress(currentProgress + exerciseModel.getPercentPerSec()); 
         lessonPanel.getProgressBar().setValue(exerciseModel.getCurrentProgress());

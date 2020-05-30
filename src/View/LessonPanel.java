@@ -21,8 +21,6 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
-import javax.swing.MutableComboBoxModel;
-import javax.swing.event.ListDataListener;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
@@ -280,16 +278,7 @@ public class LessonPanel extends JPanel{
     public void setNextPanel(JPanel nextPanel) {
         this.nextPanel = nextPanel;
     }
-    public void setMediaBar(int time){
-        String trackTime;
-        if (time > 9)
-           trackTime = "00:" + Integer.toString(time);
-        else 
-           trackTime = "00:0" + Integer.toString(time);
-        trackLen = new JLabel(trackTime);
-        currentTime = new JLabel("00:00");
-        
-    }
+
     
 
     public XYSeriesCollection createDataset(int currentAttempt, int[] points) {

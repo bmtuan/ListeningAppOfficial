@@ -26,7 +26,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class ExerciseModel {
     private Exercise currentExercise;
-    private int currentTrackScore;
     private int currentAttempt;
     private int currentTrack;
     private ArrayList<XYSeriesCollection> trackDatasets;
@@ -40,21 +39,17 @@ public class ExerciseModel {
     private boolean[] isInserted;
     private static final String dictPath = "Dictionary.txt";
     private static Set<String> dict = new HashSet<>();
-
     private int currentWordPos;
     private int currentCharPos;
     private boolean isPlaying;
     private AudioInputStream audioInputStream;
     private Clip clip; 
-    private Long currentFrame;
-    AbstractDocument textDocument;
     private LocalDateTime startTime;
-
     private int time, currentSec;
     private int percentPerSec;
     private int currentProgress;
     private Timer timer;
-    
+    private AbstractDocument texDocument;
     public ExerciseModel(Exercise ex){
         currentTrack = -1;
         this.currentExercise = ex;
@@ -80,9 +75,7 @@ public class ExerciseModel {
     }
     public void loadFile() throws FileNotFoundException, UnsupportedAudioFileException, IOException, LineUnavailableException{
         currentTrack++;
-        System.out.println("Current track: " + Integer.toString(currentTrack));
         String audioPath = this.currentExercise.getListTrack().get(currentTrack).getAudio();
-        
         audioInputStream = AudioSystem.getAudioInputStream(new File(audioPath).getAbsoluteFile());
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);
@@ -157,16 +150,8 @@ public class ExerciseModel {
 
     public static void setDict(Set<String> dict) {
         ExerciseModel.dict = dict;
-    }
-    
+    }    
 
-    public AbstractDocument getTextDocument() {
-        return textDocument;
-    }
-
-    public void setTextDocument(AbstractDocument textDocument) {
-        this.textDocument = textDocument;
-    }
     
     public void stopAudio(){
         clip.stop();
@@ -187,14 +172,7 @@ public class ExerciseModel {
         this.currentTrack = currentTrack;
     }
 
-    public int getCurrentTrackScore() {
-        return currentTrackScore;
-    }
-
-    public void setCurrentTrackScore(int currentTrackScore) {
-        this.currentTrackScore = currentTrackScore;
-    }
-
+    
     public int getCurrentAttempt() {
         return currentAttempt;
     }
@@ -274,14 +252,6 @@ public class ExerciseModel {
         this.clip = clip;
     }
 
-    public Long getCurrentFrame() {
-        return currentFrame;
-    }
-
-    public void setCurrentFrame(Long currentFrame) {
-        this.currentFrame = currentFrame;
-    }
-
     public int getCurrentPoint() {
         return currentPoint;
     }
@@ -339,19 +309,15 @@ public class ExerciseModel {
 
     }
 
-    public Exercise getExcerciseByTitle(String title, int level) {
-        try {
-            return ExerciseDAO.getExerciseByTitle(title, level);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     public void setCurrentExercise(Exercise currentExercise) {
         this.currentExercise = currentExercise;
     }
+	public void setTextDocument(AbstractDocument document) {
+	}
+	public AbstractDocument getTextDocument() {
+		return null;
+	}
     
 //    public Exercise getExcerciseByTitle(String title){
 //        return ExerciseDAO.getExerciseByTitle(title, getCurrentExercise().getLevel());
