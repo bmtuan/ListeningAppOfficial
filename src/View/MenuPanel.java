@@ -18,15 +18,15 @@ public class MenuPanel extends View{
         historyButton.setActionCommand("1");
         exitButton.setActionCommand("3");
         startButton.setText("Start");
-        startButton.setToolTipText("Start learning English");
+
         startButton.setFont(new java.awt.Font("Arial", 0, 14));
 
         historyButton.setText("History");
-        historyButton.setToolTipText("Show History");
+
         historyButton.setFont(new java.awt.Font("Arial", 0, 14));
         
         helpButton.setText("Help");
-        helpButton.setToolTipText("Support");
+
         helpButton.setFont(new java.awt.Font("Arial", 0, 14));
 
         exitButton.setText("Exit");
