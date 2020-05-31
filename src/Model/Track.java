@@ -43,10 +43,6 @@ public class Track {
         Time = time;
     }
 
-    @Override
-    public String toString() {
-        return "Track [Audio=" + Audio + ", Time=" + Time + ", Transcript=" + Transcript + "]";
-    }
 
 
     

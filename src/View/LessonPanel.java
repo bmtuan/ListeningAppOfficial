@@ -21,8 +21,6 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
-import javax.swing.MutableComboBoxModel;
-import javax.swing.event.ListDataListener;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
@@ -67,7 +65,6 @@ public class LessonPanel extends JPanel{
         boxContainer.add(bBack);
         //bBack.setPreferredSize(new Dimension(80, boxContainer.getHeight()));
         boxContainer.setPreferredSize(new Dimension(750, 50));
-        boxContainer.setBorder(BorderFactory.createLineBorder(Color.yellow));
         buttonPanel.add(boxContainer);
         buttonPanel.setPreferredSize(new Dimension(800, 100));
         
@@ -114,7 +111,6 @@ public class LessonPanel extends JPanel{
         JPanel answerPanel = new JPanel();
         answerPanel.setLayout(new BoxLayout(answerPanel, BoxLayout.Y_AXIS));
         answerPanel.add(ans);
-        answerPanel.setBorder(BorderFactory.createLineBorder(Color.yellow));
         answerPanel.add(nextPanel);
         audioPanel.add(answerPanel);
 
@@ -128,7 +124,7 @@ public class LessonPanel extends JPanel{
         
         
         bPlay = new JButton();
-        ImageIcon playIcon = new ImageIcon("Image/play1"
+        ImageIcon playIcon = new ImageIcon("Image/play_25px"
                 + ".png", "play button");
         bPlay.setIcon(playIcon);
         bPlay.setBackground(Color.white);
@@ -280,16 +276,7 @@ public class LessonPanel extends JPanel{
     public void setNextPanel(JPanel nextPanel) {
         this.nextPanel = nextPanel;
     }
-    public void setMediaBar(int time){
-        String trackTime;
-        if (time > 9)
-           trackTime = "00:" + Integer.toString(time);
-        else 
-           trackTime = "00:0" + Integer.toString(time);
-        trackLen = new JLabel(trackTime);
-        currentTime = new JLabel("00:00");
-        
-    }
+
     
 
     public XYSeriesCollection createDataset(int currentAttempt, int[] points) {

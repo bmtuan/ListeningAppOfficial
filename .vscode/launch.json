@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainController",
+            "request": "launch",
+            "mainClass": "src.Controller.MainController",
+            "projectName": "ListeningAppOfficial_b6466738"
+        }
+    ]
+}

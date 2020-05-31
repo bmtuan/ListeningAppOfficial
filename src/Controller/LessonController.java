@@ -93,8 +93,7 @@ public class LessonController extends DocumentFilter
         lessonPanel.getTrackBox().setVisible(false);
 
     }
-
-    public void fillProgressBar() {
+    private void fillProgressBar(){
         int currentProgress = exerciseModel.getCurrentProgress();
         exerciseModel.setCurrentProgress(currentProgress + exerciseModel.getPercentPerSec());
         lessonPanel.getProgressBar().setValue(exerciseModel.getCurrentProgress());
@@ -240,9 +239,9 @@ public class LessonController extends DocumentFilter
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     lessonPanel.getText().requestFocus(true);
-                    if (!exerciseModel.checkIsPlaying()) {
-                        if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()) {
-                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
+                    if (!exerciseModel.checkIsPlaying()){
+                        if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
+                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause_25px" + ".png", "pause button"));
                             exerciseModel.loadAudio();
                             if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length) {
                                 exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
@@ -280,13 +279,13 @@ public class LessonController extends DocumentFilter
                             }
 
                         }
-                        exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel
-                                .getCurrentPoint();
-                        generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(),
-                                exerciseModel.getPoints());
 
-                    } else {
-                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
+                        exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
+                        generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(), exerciseModel.getPoints());
+                            
+                    }
+                    else {
+                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));
                         exerciseModel.stopAudio();
 
                     }
@@ -359,8 +358,8 @@ public class LessonController extends DocumentFilter
 
     @Override
     public void update(LineEvent event) {
-        if (event.getType() == LineEvent.Type.STOP) {
-            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
+        if (event.getType() == LineEvent.Type.STOP){
+            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));       
             exerciseModel.setPlaying(false);
             lessonPanel.getProgressBar().setValue(0);
             exerciseModel.setCurrentProgress(0);
@@ -387,12 +386,13 @@ public class LessonController extends DocumentFilter
                 if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length) {
                     if (exerciseModel.checkIsPlaying()) {
                         exerciseModel.stopAudio();
-                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
+                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));
 
-                    } else {
-                        if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()) {
-                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
-                            exerciseModel.loadAudio();
+                    }
+                    else{
+                        if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
+                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause_25px" + ".png", "pause button"));
+                            exerciseModel.loadAudio();                        
                             exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
 
                         } else {
@@ -535,8 +535,6 @@ public class LessonController extends DocumentFilter
             prepareStatement = connection.prepareStatement(sql);
             statement = connection.createStatement();
             ResultSet rs = prepareStatement.executeQuery();
-            // System.out.println(history.getScore());
-            // System.out.println(rs.getInt(0));
             while (rs.next()){
                 if (rs.getInt("HighScore") < history.getScore()){
                 statement.executeUpdate(sql1);
@@ -549,11 +547,8 @@ public class LessonController extends DocumentFilter
                 }
              }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // System.out.println("Fuck'in wow shit");
-        // System.out.println(history.getDate());
         HistoryDAO.addHistory(history);
     }
 
