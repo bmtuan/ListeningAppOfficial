@@ -49,7 +49,7 @@ public class ExerciseModel {
     private int percentPerSec;
     private int currentProgress;
     private Timer timer;
-    private AbstractDocument texDocument;
+    private AbstractDocument textDocument;
     public ExerciseModel(Exercise ex){
         currentTrack = -1;
         this.currentExercise = ex;
@@ -309,17 +309,16 @@ public class ExerciseModel {
 
     }
 
-
     public void setCurrentExercise(Exercise currentExercise) {
         this.currentExercise = currentExercise;
     }
-	public void setTextDocument(AbstractDocument document) {
-	}
-	public AbstractDocument getTextDocument() {
-		return null;
-	}
+	  public void setTextDocument(AbstractDocument document) {
+        this.textDocument = document;
+	  }
+	  public AbstractDocument getTextDocument() {
+		    return textDocument;
+	  }
     
-
     
     
 }
