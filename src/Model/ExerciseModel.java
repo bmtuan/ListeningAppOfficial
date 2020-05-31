@@ -37,7 +37,7 @@ public class ExerciseModel {
     private String transcript;
     private String[] words, standardizedWords;
     private boolean[] isInserted;
-    private static final String dictPath = "Dictionary.txt";
+    private static final String dictPath = "Data\\Dictionary.txt";
     private static Set<String> dict = new HashSet<>();
     private int currentWordPos;
     private int currentCharPos;
@@ -49,7 +49,7 @@ public class ExerciseModel {
     private int percentPerSec;
     private int currentProgress;
     private Timer timer;
-    private AbstractDocument texDocument;
+    private AbstractDocument textDocument;
     public ExerciseModel(Exercise ex){
         currentTrack = -1;
         this.currentExercise = ex;
@@ -309,20 +309,17 @@ public class ExerciseModel {
 
     }
 
-
     public void setCurrentExercise(Exercise currentExercise) {
         this.currentExercise = currentExercise;
     }
-	public void setTextDocument(AbstractDocument document) {
-	}
-	public AbstractDocument getTextDocument() {
-		return null;
-	}
+	  public void setTextDocument(AbstractDocument document) {
+        this.textDocument = document;
+	  }
+	  public AbstractDocument getTextDocument() {
+		    return textDocument;
+	  }
     
-//    public Exercise getExcerciseByTitle(String title){
-//        return ExerciseDAO.getExerciseByTitle(title, getCurrentExercise().getLevel());
-//    }
-//    
+
     
     
     

@@ -10,8 +10,11 @@ import java.util.*;
 import java.sql.SQLException;
 import java.awt.*;
 import java.time.*;
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
+// import jdk.internal.org.objectweb.asm.Label;
 import src.View.*;
 import src.Model.*;
 import src.DAO.ExerciseDAO;
@@ -39,19 +42,21 @@ public class TopicController implements ActionListener, MouseListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e1) {
+        JButton button = (JButton) e1.getSource();
         // TODO Auto-generated method stub
-        if (e.getSource() =="Back"){
+        if (button == topicPanel.getBackButton()){
         topicPanel.setVisible(false);
         LevelController lc = new LevelController(new LevelPanel());
         MainFrame.refresh(lc.getLevelPanel());
         }
         else{
-            topicPanel.setVisible(false);
-            MainFrame.getInstance().add(MenuController.getInstance().getView());
+                if(button == topicPanel.getHomeButton()){
+                    topicPanel.setVisible(false);
+                    MainFrame.getInstance().add(MenuController.getInstance().getView());
+                }
         }
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -62,6 +67,8 @@ public class TopicController implements ActionListener, MouseListener {
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
+        x.setForeground(Color.black);
+        topicPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         String title = x.getText();
         int level = levelModel.getLevel();
         Exercise ex;
@@ -105,6 +112,7 @@ public class TopicController implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
+        // JButton y = (JButton) e.getSource();
         x.setForeground(Color.black);
         topicPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }  
