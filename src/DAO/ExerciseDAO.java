@@ -10,7 +10,7 @@ public class ExerciseDAO {
     public static ArrayList<Exercise> getAllExerciseByLv(int Lv) throws SQLException{
     ArrayList<Exercise> list = new ArrayList<>();
     Connection connection = JDBCConnection.getJDBCConnection();
-    String sql = "SELECT exercise.Title, exercise.Lv ,exercise.Time,exercise.HighScore, exercise.Description FROM exercise WHERE exercise.Lv = " + Lv ;
+    String sql = "SELECT exercise.Title, exercise.Lv ,exercise.Time,exercise.HighScore, exercise.Description FROM test.exercise WHERE exercise.Lv = " + Lv ;
     try{
         PreparedStatement prepareStatement = connection.prepareStatement(sql);
         ResultSet rs = prepareStatement.executeQuery();
@@ -33,7 +33,7 @@ public class ExerciseDAO {
     
     public static Exercise getExerciseByTitle(String title, int lv) throws SQLException{
         Connection connection = JDBCConnection.getJDBCConnection();
-        String sql = "SELECT track.Audio,  track.Transcript,track.Time FROM track INNER JOIN exercise On track.exerciseID = exercise.idExercise AND exercise.Title ="+ "\"" +title+ "\"";
+        String sql = "SELECT track.Audio,  track.Transcript,track.Time FROM test.track INNER JOIN test.exercise On track.exerciseID = exercise.idExercise AND exercise.Title ="+ "\"" +title+ "\"";
         Exercise ex = new Exercise();
         try{
             PreparedStatement prepareStatement = connection.prepareStatement(sql);

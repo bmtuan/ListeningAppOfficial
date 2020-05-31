@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - HistoryDAO",
+            "request": "launch",
+            "mainClass": "src.DAO.HistoryDAO",
+            "projectName": "ListeningAppOfficial_74144be3"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ExerciseDAO",
+            "request": "launch",
+            "mainClass": "src.DAO.ExerciseDAO",
+            "projectName": "ListeningAppOfficial_74144be3"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainController",
+            "request": "launch",
+            "mainClass": "src.Controller.MainController",
+            "projectName": "ListeningAppOfficial_74144be3"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MainController",
             "request": "launch",
             "mainClass": "src.Controller.MainController",

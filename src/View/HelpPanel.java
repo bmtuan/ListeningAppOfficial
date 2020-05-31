@@ -17,6 +17,7 @@ public class HelpPanel extends View implements ActionListener {
         helpTextArea = new JTextArea();
         backButton = new JButton();
         backButton.addActionListener(this);
+        backButton.setIcon(new javax.swing.ImageIcon("Image\\back.png"));
         helpTextArea.setColumns(20);
         helpTextArea.setFont(new java.awt.Font("Arial", 0, 19));
         helpTextArea.setRows(5);
@@ -38,7 +39,7 @@ public class HelpPanel extends View implements ActionListener {
         helpTextArea.append("     Chương trình sẽ chỉ tính điểm theo công thức sau: 10* (11 – x/y). Trong đó x là tổng thời gian người dùng từ lúc bắt đầu nghe đến lúc kết thúc. Còn y là tổng thời lượng của bài nghe.");
         helpTextArea.setLineWrap(true);
         helpTextArea.setWrapStyleWord(true);
-        backButton.setText("Back");
+        backButton.setText(null);
         backButton.setFont(new java.awt.Font("Arial", 0, 14));
 
         GroupLayout layout = new GroupLayout(this);

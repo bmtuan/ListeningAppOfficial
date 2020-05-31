@@ -506,15 +506,13 @@ public class LessonController extends DocumentFilter
         //     // TODO Auto-generated catch block
         //     e1.printStackTrace();
         // }
-
+        }
             }
         } else if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1)
             lessonPanel.getNextPanel().setVisible(true);
         else {
             lessonPanel.getTrackBox().setVisible(true);
             createHistory();
-        }
-
         }
     }
 
@@ -525,9 +523,9 @@ public class LessonController extends DocumentFilter
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint());
-        String sql = "SELECT exercise.HighScore FROM test.exercise WHERE exercise.Title = " + "\"" + history.getTopic()
+        String sql = "SELECT test.exercise.HighScore FROM test.exercise WHERE exercise.Title = " + "\"" + history.getTopic()
                 + "\"";
-        String sql1 = "UPDATE exercise SET exercise.HighScore =" + history.getScore() +" WHERE exercise.Title = " + "\"" + history.getTopic()
+        String sql1 = "UPDATE test.exercise SET exercise.HighScore =" + history.getScore() +" WHERE exercise.Title = " + "\"" + history.getTopic()
         + "\"";
         Connection connection = JDBCConnection.getJDBCConnection();
         PreparedStatement prepareStatement;
