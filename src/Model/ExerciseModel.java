@@ -37,7 +37,7 @@ public class ExerciseModel {
     private String transcript;
     private String[] words, standardizedWords;
     private boolean[] isInserted;
-    private static final String dictPath = "Dictionary.txt";
+    private static final String dictPath = "Data\\Dictionary.txt";
     private static Set<String> dict = new HashSet<>();
     private int currentWordPos;
     private int currentCharPos;
@@ -319,11 +319,7 @@ public class ExerciseModel {
 		return null;
 	}
     
-//    public Exercise getExcerciseByTitle(String title){
-//        return ExerciseDAO.getExerciseByTitle(title, getCurrentExercise().getLevel());
-//    }
-//    
-    
+
     
     
 }

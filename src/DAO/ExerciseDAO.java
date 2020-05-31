@@ -55,7 +55,7 @@ public class ExerciseDAO {
             e.printStackTrace();
             }
         return ex;   
-        }
+         }
         // public static void main(String[] args) {
         //     try {
         //         for (Exercise x : ExerciseDAO.getAllExerciseByLv(3)) {
