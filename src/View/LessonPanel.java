@@ -65,7 +65,6 @@ public class LessonPanel extends JPanel{
         boxContainer.add(bBack);
         //bBack.setPreferredSize(new Dimension(80, boxContainer.getHeight()));
         boxContainer.setPreferredSize(new Dimension(750, 50));
-        boxContainer.setBorder(BorderFactory.createLineBorder(Color.yellow));
         buttonPanel.add(boxContainer);
         buttonPanel.setPreferredSize(new Dimension(800, 100));
         
@@ -112,7 +111,6 @@ public class LessonPanel extends JPanel{
         JPanel answerPanel = new JPanel();
         answerPanel.setLayout(new BoxLayout(answerPanel, BoxLayout.Y_AXIS));
         answerPanel.add(ans);
-        answerPanel.setBorder(BorderFactory.createLineBorder(Color.yellow));
         answerPanel.add(nextPanel);
         audioPanel.add(answerPanel);
 
