@@ -124,7 +124,7 @@ public class LessonPanel extends JPanel{
         
         
         bPlay = new JButton();
-        ImageIcon playIcon = new ImageIcon("Image/play1"
+        ImageIcon playIcon = new ImageIcon("Image/play_25px"
                 + ".png", "play button");
         bPlay.setIcon(playIcon);
         bPlay.setBackground(Color.white);

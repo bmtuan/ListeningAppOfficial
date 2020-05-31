@@ -234,7 +234,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                     lessonPanel.getText().requestFocus(true);
                     if (!exerciseModel.checkIsPlaying()){
                         if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
-                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
+                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause_25px" + ".png", "pause button"));
                             exerciseModel.loadAudio();
                             if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
                                 exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
@@ -275,7 +275,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                             
                     }
                     else {
-                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
+                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));
                         exerciseModel.stopAudio();
                         
                     }
@@ -348,7 +348,7 @@ public class LessonController extends DocumentFilter implements ActionListener, 
     @Override
     public void update(LineEvent event) {
         if (event.getType() == LineEvent.Type.STOP){
-            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));       
+            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));       
             exerciseModel.setPlaying(false);
             lessonPanel.getProgressBar().setValue(0);
             exerciseModel.setCurrentProgress(0); 
@@ -376,12 +376,12 @@ public class LessonController extends DocumentFilter implements ActionListener, 
                 if (exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length){
                     if (exerciseModel.checkIsPlaying()){
                         exerciseModel.stopAudio();
-                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play1" + ".png", "play button"));
+                        lessonPanel.getbPlay().setIcon(new ImageIcon("Image/play_25px" + ".png", "play button"));
 
                     }
                     else{
                         if (exerciseModel.getCurrentAttempt() < ExerciseModel.getMaxNumOfAttempts()){
-                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause" + ".png", "pause button"));
+                            lessonPanel.getbPlay().setIcon(new ImageIcon("Image/pause_25px" + ".png", "pause button"));
                             exerciseModel.loadAudio();                        
                             exerciseModel.setCurrentAttempt(exerciseModel.getCurrentAttempt() + 1);
 
@@ -485,8 +485,6 @@ public class LessonController extends DocumentFilter implements ActionListener, 
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint());
-        System.out.println("Fuck'in wow shit");
-        System.out.println(history.getDate());
         HistoryDAO.addHistory(history);
     }
 
