@@ -5,7 +5,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame{
     private static MainFrame instance = new MainFrame();
     public MainFrame(){
-        setTitle("Learn English");
+        setTitle("Listening English Pro");
         setSize(800, 600);
         setResizable(false);
         setLocationRelativeTo(null);

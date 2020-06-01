@@ -22,13 +22,6 @@ public class LevelController implements ActionListener, MouseListener {
     }
 
     public LevelController(LevelPanel lp) {
-        lp.getLevel_1Button().addActionListener(this);
-        lp.getLevel_2Button().addActionListener(this);
-        lp.getLevel_3Button().addActionListener(this);
-        lp.getLevel_2Button().addMouseListener(this);
-        lp.getLevel_1Button().addMouseListener(this);
-        lp.getLevel_3Button().addMouseListener(this);
-        lp.getBackButton().addMouseListener(this);
         this.levelPanel = lp;
     }
 
@@ -39,17 +32,14 @@ public class LevelController implements ActionListener, MouseListener {
         switch (action) {
             case 1:
                 TopicController tc1 = new TopicController(new LevelModel(action), new TopicPanel(action));
-                levelPanel.getLevel_1Button().setForeground(Color.black);
                 MainFrame.refresh(tc1.getTopicPanel());
                 break;
             case 2:
                 TopicController tc2 = new TopicController(new LevelModel(action), new TopicPanel(action));
-                levelPanel.getLevel_2Button().setForeground(Color.black);
                 MainFrame.refresh(tc2.getTopicPanel());
                 break;
             case 3:
                 TopicController tc3 = new TopicController(new LevelModel(action), new TopicPanel(action));
-                levelPanel.getLevel_3Button().setForeground(Color.black);
                 MainFrame.refresh(tc3.getTopicPanel());
                 break;
         }

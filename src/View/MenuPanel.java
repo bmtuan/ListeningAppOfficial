@@ -1,13 +1,14 @@
 
 package src.View;
 import javax.swing.*;
-public class MenuPanel extends JPanel {
+// import org.netbeans.lib.awtextra;
+public class MenuPanel extends View {
     JPanel jPanel2,jPanel3,jPanel4,jPanel5,jPanel6,jPanel7;
     JLabel startLabel1,startLabel2,historyLabel2,historyLabel1,jLabel5,jLabel6,helpLabel1,helpLabel2,exitLabel1,exitLabel2,jLabel11;
     /**
      * Creates new form MenuPanel
      */
-    public MenuPanel() {
+    public MenuPanel(){
         jPanel2 = new JPanel();
         jPanel3 = new JPanel();
         startLabel1 = new JLabel();
@@ -66,7 +67,7 @@ public class MenuPanel extends JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 410, -1));
+        // jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 410, -1));
 
         jPanel4.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -98,7 +99,7 @@ public class MenuPanel extends JPanel {
             .addComponent(historyLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 410, 90));
+        // jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 410, 90));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 153));
 
@@ -127,7 +128,7 @@ public class MenuPanel extends JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 410, 80));
+        // jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 410, 80));
 
         jPanel6.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -155,7 +156,7 @@ public class MenuPanel extends JPanel {
             .addComponent(helpLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 410, 80));
+        // jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 410, 80));
 
         jPanel7.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -187,7 +188,7 @@ public class MenuPanel extends JPanel {
                 .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 410, 80));
+        // jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 410, 80));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 102, 255));
@@ -195,7 +196,7 @@ public class MenuPanel extends JPanel {
         jLabel11.setText("Listening Pro");
         jLabel11.setToolTipText("");
         jLabel11.setDoubleBuffered(true);
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
+        // jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,5 +210,37 @@ public class MenuPanel extends JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );     
+}
+
+public JLabel getStartLabel2() {
+    return startLabel2;
+}
+
+public void setStartLabel2(JLabel startLabel2) {
+    this.startLabel2 = startLabel2;
+}
+
+public JLabel getHistoryLabel2() {
+    return historyLabel2;
+}
+
+public void setHistoryLabel2(JLabel historyLabel2) {
+    this.historyLabel2 = historyLabel2;
+}
+
+public JLabel getHelpLabel2() {
+    return helpLabel2;
+}
+
+public void setHelpLabel2(JLabel helpLabel2) {
+    this.helpLabel2 = helpLabel2;
+}
+
+public JLabel getExitLabel2() {
+    return exitLabel2;
+}
+
+public void setExitLabel2(JLabel exitLabel2) {
+    this.exitLabel2 = exitLabel2;
 }
 }

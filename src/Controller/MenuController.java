@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
  import java.awt.Cursor;
  import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import src.Model.HistoryModel;
 import src.View.*;
@@ -21,14 +22,10 @@ public class MenuController implements ActionListener, MouseListener {
 
     private MenuController(MenuPanel v) {
         this.mp = v;
-        v.getStartButton().addMouseListener(this);
-        v.getStartButton().addActionListener(this);
-        v.getHistoryButton().addMouseListener(this);
-        v.getHistoryButton().addActionListener(this);
-        v.getHelpButton().addMouseListener(this);
-        v.getHelpButton().addActionListener(this);
-        v.getExitButton().addMouseListener(this);
-        v.getExitButton().addActionListener(this);
+        v.getStartLabel2().addMouseListener(this);
+        v.getHelpLabel2().addMouseListener(this);
+        v.getHistoryLabel2().addMouseListener(this);
+        v.getExitLabel2().addMouseListener(this);
     }
 
     public static MenuController getInstance() {
@@ -46,17 +43,14 @@ public class MenuController implements ActionListener, MouseListener {
         switch (action) {
             case 0:
                 LevelController lc = new LevelController(new LevelPanel());
-                mp.getStartButton().setForeground(Color.black);
                 MainFrame.refresh(lc.getLevelPanel());
                 break;
             case 1:
                 HistoryController hc = new HistoryController(new HistoryModel(), new HistoryPanel());
-                mp.getHistoryButton().setForeground(Color.black);
                 MainFrame.refresh(hc.getHistoryPanel());
                 break;
             case 2:
                 MainFrame.refresh(new HelpPanel());
-                mp.getHelpButton().setForeground(Color.black);
                 break;
             case 3:
                 System.exit(0);
@@ -67,7 +61,10 @@ public class MenuController implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
+        JLabel X = (JLabel) e.getSource();
+        if (x v.getStartLabel2){
 
+        }
     }
 
     @Override
@@ -84,18 +81,12 @@ public class MenuController implements ActionListener, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        JButton x = (JButton) e.getSource();
-        x.setForeground(Color.red.brighter());
-        x.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
+
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-        JButton x = (JButton) e.getSource();
-        x.setForeground(Color.black);
-        // x.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
     }
 }
