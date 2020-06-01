@@ -26,13 +26,13 @@ public class MenuPanel extends View {
         exitLabel1 = new JLabel();
         exitLabel2 = new JLabel();
         jLabel11 = new JLabel();
-
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -42,7 +42,7 @@ public class MenuPanel extends View {
 
         startLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         startLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        startLabel2.setText("Bắt dầu");
+        startLabel2.setText("Bắt đầu");
         startLabel2.setToolTipText("");
         startLabel2.setDoubleBuffered(true);
 
@@ -67,7 +67,7 @@ public class MenuPanel extends View {
                 .addContainerGap())
         );
 
-        // jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 410, -1));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 410, -1));
 
         jPanel4.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -99,7 +99,7 @@ public class MenuPanel extends View {
             .addComponent(historyLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        // jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 410, 90));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 410, 90));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 153));
 
@@ -128,7 +128,7 @@ public class MenuPanel extends View {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        // jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 410, 80));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 410, 80));
 
         jPanel6.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -156,7 +156,7 @@ public class MenuPanel extends View {
             .addComponent(helpLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        // jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 410, 80));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 410, 80));
 
         jPanel7.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -188,7 +188,7 @@ public class MenuPanel extends View {
                 .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        // jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 410, 80));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 410, 80));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 102, 255));
@@ -196,7 +196,7 @@ public class MenuPanel extends View {
         jLabel11.setText("Listening Pro");
         jLabel11.setToolTipText("");
         jLabel11.setDoubleBuffered(true);
-        // jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,8 +209,8 @@ public class MenuPanel extends View {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-        );     
-}
+        );
+    }
 
 public JLabel getStartLabel2() {
     return startLabel2;

@@ -19,7 +19,7 @@ import src.View.*;
 import src.Model.*;
 import src.DAO.ExerciseDAO;
 
-public class TopicController implements ActionListener, MouseListener {
+public class TopicController implements  MouseListener {
     private LevelModel levelModel;
     private TopicPanel topicPanel;
 
@@ -32,31 +32,11 @@ public class TopicController implements ActionListener, MouseListener {
     }
 
     public TopicController(LevelModel levelModel, TopicPanel topicPanel) {
-        topicPanel.getBackButton().addActionListener(this);
-        topicPanel.getHomeButton().addActionListener(this);
+
         this.levelModel = levelModel;
         this.topicPanel = topicPanel;
-        for (int i = 0; i < topicPanel.getLessonLabel().length; i++) {
-            topicPanel.getLessonLabel()[i].addMouseListener(this);
-        }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e1) {
-        JButton button = (JButton) e1.getSource();
-        // TODO Auto-generated method stub
-        if (button == topicPanel.getBackButton()){
-        topicPanel.setVisible(false);
-        LevelController lc = new LevelController(new LevelPanel());
-        MainFrame.refresh(lc.getLevelPanel());
-        }
-        else{
-                if(button == topicPanel.getHomeButton()){
-                    topicPanel.setVisible(false);
-                    MainFrame.getInstance().add(MenuController.getInstance().getView());
-                }
-        }
-    }
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub

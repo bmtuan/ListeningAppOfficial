@@ -1,125 +1,145 @@
 package src.View;
-
 import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.plaf.DimensionUIResource;
+
 import src.Model.LevelModel;
+
 import java.awt.*;
 
-public class TopicPanel extends View{
-    private JButton backButton;
-    private JButton homeButton;
-    private JPanel lessonPanel;
-    private LevelModel lm ;
-    private JPanel[] panel;
-    private JLabel[] lessonLabel;
+public class TopicPanel extends JPanel{
+    private JLabel backLabel;
+    private JPanel panelRight;
+    private JPanel panelLeft;
+    private JLabel chooseTopicLabel;
+    LevelModel lm;
+    private JPanel[] topic;
     private JLabel[] information;
+    private JLabel[] title;
     private JLabel[] transcript;
-    private JSeparator[] separators = new JSeparator[2];
+    private JSeparator[] separators;
 
-    public TopicPanel(int level){
-        lm = new LevelModel(level);
-        int size = lm.getAllExerciseByLevel(level).size();
-        backButton = new JButton("Back");
-        homeButton = new JButton("Home");
-        lessonPanel = new JPanel();
-        panel = new JPanel[size];
-        lessonLabel = new JLabel[size];
-        information = new JLabel[size];
-        transcript = new JLabel[size];
+    public TopicPanel(int level) {
+        
+        panelLeft = new JPanel();
+        panelRight = new JPanel();
+        backLabel = new JLabel();
+        chooseTopicLabel = new JLabel();
+        topic = new JPanel[3];
+        title = new JLabel[3];
+        information = new JLabel[3];
+        transcript = new JLabel[3];
+        separators = new JSeparator[2];
 
-        backButton.setFont(new Font("Arial", 0, 14));
-        homeButton.setFont(new Font("Arial", 0, 14));
+        setMaximumSize(new Dimension(800, 600));
+        setMinimumSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(800, 600));
+        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
-        lessonPanel.setMaximumSize(new Dimension(640, 480));
-        lessonPanel.setMinimumSize(new Dimension(640, 480));
-        lessonPanel.setPreferredSize(new Dimension(640, 480));
-        lessonPanel.setLayout(new BoxLayout(lessonPanel, BoxLayout.PAGE_AXIS));
-        lessonPanel.setBorder(BorderFactory.createLineBorder(Color.gray.brighter()));
+        panelLeft.setBackground(new Color(153, 153, 255));
+        panelLeft.setMaximumSize(new Dimension(200, 600));
+        panelLeft.setMinimumSize(new Dimension(200, 600));
+        panelLeft.setPreferredSize(new Dimension(200, 600));
 
-        for( int i=0 ; i<size ;i++){
-            lessonLabel[i] = new JLabel();
-            lessonLabel[i].setFont(new Font("Arial", 0, 20));
-            lessonLabel[i].setText(lm.getAllExerciseByLevel(level).get(i).getTitle());
-            information[i] =new JLabel();
+        backLabel.setFont(new Font("Arial", 0, 18));
+        backLabel.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\back.png")); // NOI18N
+        backLabel.setText("Trở về");
+
+        chooseTopicLabel.setFont(new Font("Arial", 0, 24)); // NOI18N
+        chooseTopicLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        chooseTopicLabel.setText("Chọn mức nghe");
+
+        GroupLayout panelLeftLayout = new GroupLayout(panelLeft);
+        panelLeft.setLayout(panelLeftLayout);
+        panelLeftLayout.setHorizontalGroup(
+            panelLeftLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(backLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(chooseTopicLabel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+        );
+        panelLeftLayout.setVerticalGroup(
+            panelLeftLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(panelLeftLayout.createSequentialGroup()
+                .addComponent(backLabel, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                .addGap(240, 240, 240)
+                .addComponent(chooseTopicLabel, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 240, Short.MAX_VALUE))
+        );
+
+        add(panelLeft);
+
+        panelRight.setMaximumSize(new Dimension(600, 600));
+        panelRight.setMinimumSize(new Dimension(600, 600));
+        panelRight.setPreferredSize(new Dimension(600, 600));
+        panelRight.setLayout(new BoxLayout(panelRight, BoxLayout.PAGE_AXIS));
+
+        for(int i=0 ; i<3 ; i++){
+            title[i] = new JLabel();
+            title[i].setFont(new Font("Arial", 0, 18));
+            title[i].setText("Topic"+(i+1));
+            title[i].setPreferredSize(new Dimension(600, 60));
+
+            information[i] = new JLabel();
             information[i].setFont(new Font("Arial", 0, 14));
-            information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +"     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
-            information[i].setMaximumSize(new Dimension(640, 50));
-            information[i].setMinimumSize(new Dimension(640, 50));
-            information[i].setPreferredSize(new Dimension(640, 50));
+            information[i].setText("Level:" + "     Time:" + "     HighScore:" );
+            information[i].setPreferredSize(new Dimension(600, 60));
 
             transcript[i] = new JLabel();
             transcript[i].setFont(new Font("Arial", 0, 14));
-            transcript[i].setText(lm.getAllExerciseByLevel(level).get(i).getDescription());
-            transcript[i].setMaximumSize(new Dimension(640, 50));
-            transcript[i].setMinimumSize(new Dimension(640, 50));
-            transcript[i].setPreferredSize(new Dimension(640, 50));
-        }
-
-        for(int i=0 ; i<size ; i++){
-            panel[i] = new JPanel();
-            panel[i].setMaximumSize(new Dimension(640, 160));
-            panel[i].setMinimumSize(new Dimension(640, 160));
-            panel[i].setPreferredSize(new Dimension(640, 160));
-            panel[i].setLayout(new BoxLayout(panel[i], BoxLayout.PAGE_AXIS));
-            panel[i].add(lessonLabel[i]);
-            panel[i].add(information[i]);
-            panel[i].add(transcript[i]);
-        }
-
-        for(int i=0 ; i<size ; i++){
-            lessonPanel.add(panel[i]);
-            if(i!=2){
-                separators[i] = new JSeparator();
-                lessonPanel.add(separators[i]);
+            transcript[i].setText("Transcript:" );
+            transcript[i].setPreferredSize(new Dimension(600, 60));
             }
+
+            for(int i=0 ; i<3 ;i++){
+            topic[i] = new JPanel();
+            topic[i].setPreferredSize(new Dimension(600, 200));
+            topic[i].setLayout(new BoxLayout(topic[i], BoxLayout.PAGE_AXIS));
+            topic[i].add(title[i]);
+            topic[i].add(information[i]);
+            topic[i].add(transcript[i]);
+            }
+            
+            for(int i=0 ; i<3 ;i++){
+                panelRight.add(topic[i]);
+                if(i != 2){
+                    separators[i] = new JSeparator();
+                    panelRight.add(separators[i]);
+                }
+            }
+
+            add(panelRight);
         }
 
-        GroupLayout layout = new GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lessonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backButton, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lessonPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-    }
+        public JLabel getBackLabel() {
+            return backLabel;
+        }
 
-    public JButton getBackButton() {
-        return backButton;
-    }
+        public void setBackLabel(JLabel backLabel) {
+            this.backLabel = backLabel;
+        }
 
-    public JLabel[] getLessonLabel() {
-        return lessonLabel;
-    }
+        public JLabel[] getInformation() {
+            return information;
+        }
 
-    public void setLessonLabel(JLabel[] lessonLabel) {
-        this.lessonLabel = lessonLabel;
-    }
+        public void setInformation(JLabel[] information) {
+            this.information = information;
+        }
 
-    public JButton getHomeButton() {
-        return homeButton;
-    }
+        public JLabel[] getTitle() {
+            return title;
+        }
 
-    public void setHomeButton(JButton homeButton) {
-        this.homeButton = homeButton;
-    }
+        public void setTitle(JLabel[] title) {
+            this.title = title;
+        }
+
+        public JLabel[] getTranscript() {
+            return transcript;
+        }
+
+        public void setTranscript(JLabel[] transcript) {
+            this.transcript = transcript;
+        }
+
 
 }
+     
