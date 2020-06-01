@@ -1,132 +1,213 @@
+
 package src.View;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Image;
-import java.io.IOException;
-
-public class MenuPanel extends View {
-    private JLabel title;
-    private JButton exitButton;
-    private JButton helpButton;
-    private JButton historyButton;
-    private JButton startButton;
-
+public class MenuPanel extends JPanel {
+    JPanel jPanel2,jPanel3,jPanel4,jPanel5,jPanel6,jPanel7;
+    JLabel startLabel1,startLabel2,historyLabel2,historyLabel1,jLabel5,jLabel6,helpLabel1,helpLabel2,exitLabel1,exitLabel2,jLabel11;
+    /**
+     * Creates new form MenuPanel
+     */
     public MenuPanel() {
-            title = new JLabel();
-            startButton = new JButton();
-            helpButton = new JButton();
-            exitButton = new JButton();
-            historyButton = new JButton();
-            // title.setIcon(new javax.swing.ImageIcon("Image\\Ok.png"));
-            // title.setFont(new java.awt.Font("Arial", 0, 36));
-            // title.setHorizontalAlignment(SwingConstants.CENTER);
-            // title.setText("Choose Level");
-            startButton.setIcon(new javax.swing.ImageIcon("Image\\start.png"));
-            helpButton.setIcon(new javax.swing.ImageIcon("Image\\hint.png"));
-            historyButton.setIcon(new javax.swing.ImageIcon("Image\\history.png"));
-            exitButton.setIcon(new javax.swing.ImageIcon("Image\\exit.png"));
-            startButton.setActionCommand("0");
-            startButton.requestFocus(true);
-            helpButton.setActionCommand("2");
-            historyButton.setActionCommand("1");
-            exitButton.setActionCommand("3");
-            startButton.setText("Start");
-    
-            startButton.setFont(new java.awt.Font("Arial", 0, 14));
-    
-            historyButton.setText("History");
-    
-            historyButton.setFont(new java.awt.Font("Arial", 0, 14));
-            
-            helpButton.setText("Help");
-    
-            helpButton.setFont(new java.awt.Font("Arial", 0, 14));
-    
-            exitButton.setText("Exit");
-            exitButton.setFont(new java.awt.Font("Arial", 0, 14));
-        // startButton = new JButton();
-        // startButton.setIcon(new ImageIcon(img));
-        // helpButton = new JButton();
-        // exitButton = new JButton();
-        // historyButton = new JButton();
-        // startButton.setActionCommand("0");
-        // startButton.requestFocus(true);
-        // helpButton.setActionCommand("2");
-        // historyButton.setActionCommand("1");
-        // exitButton.setActionCommand("3");
-        // startButton.setText("Start");
+        jPanel2 = new JPanel();
+        jPanel3 = new JPanel();
+        startLabel1 = new JLabel();
+        startLabel2 = new JLabel();
+        jPanel4 = new  JPanel();
+        historyLabel2 =  new JLabel();
+        historyLabel1 =  new JLabel();
+        jPanel5 = new JPanel();
+        jLabel5 = new  JLabel();
+        jLabel6 = new  JLabel();
+        jPanel6 = new  JPanel();
+        helpLabel1 = new  JLabel();
+        helpLabel2 = new JLabel();
+        jPanel7 = new JPanel();
+        exitLabel1 = new JLabel();
+        exitLabel2 = new JLabel();
+        jLabel11 = new JLabel();
 
-        // startButton.setFont(new java.awt.Font("Arial", 0, 14));
+        setBackground(new java.awt.Color(102, 102, 255));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
-        // historyButton.setText("History");
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
-        // historyButton.setFont(new java.awt.Font("Arial", 0, 14));
-        
-        // helpButton.setText("Help");
+        jPanel3.setBackground(new java.awt.Color(51, 204, 255));
 
-        // helpButton.setFont(new java.awt.Font("Arial", 0, 14));
+        startLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\start.png")); // NOI18N
+        startLabel1.setDoubleBuffered(true);
+        startLabel1.setName(""); // NOI18N
 
-        // exitButton.setText("Exit");
-        // exitButton.setFont(new java.awt.Font("Arial", 0, 14));
+        startLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        startLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startLabel2.setText("Bắt dầu");
+        startLabel2.setToolTipText("");
+        startLabel2.setDoubleBuffered(true);
 
-        GroupLayout layout = new GroupLayout(this);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(startLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(startLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(startLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(startLabel1)
+                .addContainerGap())
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 410, -1));
+
+        jPanel4.setBackground(new java.awt.Color(51, 204, 255));
+
+        historyLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        historyLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        historyLabel2.setText("Lịch sử");
+        historyLabel2.setDoubleBuffered(true);
+
+        historyLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\history.png")); // NOI18N
+        historyLabel1.setDoubleBuffered(true);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(historyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(historyLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addGap(1, 1, 1))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(historyLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(historyLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 410, 90));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 153));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Lịch sử");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\history.png")); // NOI18N
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 410, 80));
+
+        jPanel6.setBackground(new java.awt.Color(51, 204, 255));
+
+        helpLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\hint.png")); // NOI18N
+        helpLabel1.setDoubleBuffered(true);
+
+        helpLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        helpLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        helpLabel2.setText("Hướng dẫn");
+        helpLabel2.setDoubleBuffered(true);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(helpLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(helpLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(helpLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(helpLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 410, 80));
+
+        jPanel7.setBackground(new java.awt.Color(51, 204, 255));
+
+        exitLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\exit.png")); // NOI18N
+        exitLabel1.setDoubleBuffered(true);
+
+        exitLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exitLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitLabel2.setText("Thoát");
+        exitLabel2.setDoubleBuffered(true);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exitLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(exitLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 410, 80));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Listening Pro");
+        jLabel11.setToolTipText("");
+        jLabel11.setDoubleBuffered(true);
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(350, 350, 350)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(exitButton, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        // .addComponent(title, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                        .addComponent(helpButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(historyButton, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(startButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(390, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                // .addComponent(title, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                // .addGap(20, 20, 20)
-                .addComponent(startButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(historyButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(helpButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(exitButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-    }
-
-    public JButton getExitButton() {
-        return exitButton;
-    }
-    public void setExitButton(JButton exitButton) {
-        this.exitButton = exitButton;
-    }
-
-    public JButton getHelpButton() {
-        return helpButton;
-    }
-    public void setHelpButton(JButton helpButton) {
-        this.helpButton = helpButton;
-    }
-
-    public JButton getHistoryButton() {
-        return historyButton;
-    }
-    public void setHistoryButton(JButton historyButton) {
-        this.historyButton = historyButton;
-    }
-
-    public JButton getStartButton() {
-        return startButton;
-    }
-    public void setStartButton(JButton startButton) {
-        this.startButton = startButton;
-    }
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );     
+}
 }
