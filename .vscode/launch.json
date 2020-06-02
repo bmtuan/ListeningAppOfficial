@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - UserDAO",
+            "request": "launch",
+            "mainClass": "src.DAO.UserDAO",
+            "projectName": "ListeningAppOfficial_74144be3"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - HistoryDAO",
             "request": "launch",
             "mainClass": "src.DAO.HistoryDAO",

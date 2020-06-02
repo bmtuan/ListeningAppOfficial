@@ -1,14 +1,10 @@
 package src.Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
  import java.awt.Cursor;
  import java.awt.Color;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import src.Model.HistoryModel;
 import src.View.*;
@@ -57,7 +53,8 @@ public class MenuController implements MouseListener {
             MainFrame.refresh(new HelpPanel());
         }
         else {
-            System.exit(0);
+            LoginController lc = new LoginController(new LoginPanel());
+            MainFrame.refresh(lc.getLp());
         }
     }
 

@@ -1,7 +1,7 @@
 package src.View;
 import javax.swing.*;
 
-public class LoginPanel extends JPanel {
+public class LoginPanel extends View {
     private JButton LoginButton;
     private ButtonGroup buttonGroup1;
     private JPasswordField confirmPasswordField;
@@ -306,5 +306,110 @@ public class LoginPanel extends JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-    }                                     
+    }
+
+    public JButton getLoginButton() {
+        return LoginButton;
+    }
+
+    public void setLoginButton(JButton loginButton) {
+        LoginButton = loginButton;
+    }
+
+    public JPasswordField getConfirmPasswordField() {
+        return confirmPasswordField;
+    }
+
+    public void setConfirmPasswordField(JPasswordField confirmPasswordField) {
+        this.confirmPasswordField = confirmPasswordField;
+    }
+
+    public JComboBox<String> getDayComboBox() {
+        return dayComboBox;
+    }
+
+    public void setDayComboBox(JComboBox<String> dayComboBox) {
+        this.dayComboBox = dayComboBox;
+    }
+
+    public JRadioButton getFemaleRadioButton() {
+        return femaleRadioButton;
+    }
+
+    public void setFemaleRadioButton(JRadioButton femaleRadioButton) {
+        this.femaleRadioButton = femaleRadioButton;
+    }
+
+    public JLabel getForgetLabel() {
+        return forgetLabel;
+    }
+
+    public void setForgetLabel(JLabel forgetLabel) {
+        this.forgetLabel = forgetLabel;
+    }
+
+    public JPasswordField getLoginPasswordField() {
+        return loginPasswordField;
+    }
+
+    public void setLoginPasswordField(JPasswordField loginPasswordField) {
+        this.loginPasswordField = loginPasswordField;
+    }
+
+    public JRadioButton getMaleRadioButton() {
+        return maleRadioButton;
+    }
+
+    public void setMaleRadioButton(JRadioButton maleRadioButton) {
+        this.maleRadioButton = maleRadioButton;
+    }
+
+    public JComboBox<String> getMonthComboBox() {
+        return monthComboBox;
+    }
+
+    public void setMonthComboBox(JComboBox<String> monthComboBox) {
+        this.monthComboBox = monthComboBox;
+    }
+
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    public void setNameTextField(JTextField nameTextField) {
+        this.nameTextField = nameTextField;
+    }
+
+    public JButton getSignUpButton() {
+        return signUpButton;
+    }
+
+    public void setSignUpButton(JButton signUpButton) {
+        this.signUpButton = signUpButton;
+    }
+
+    public JPasswordField getSignUpPasswordField() {
+        return signUpPasswordField;
+    }
+
+    public void setSignUpPasswordField(JPasswordField signUpPasswordField) {
+        this.signUpPasswordField = signUpPasswordField;
+    }
+
+    public JTextField getSignUpUserTextField() {
+        return signUpUserTextField;
+    }
+
+    public void setSignUpUserTextField(JTextField signUpUserTextField) {
+        this.signUpUserTextField = signUpUserTextField;
+    }
+
+    public JTextField getTaikhoanTextField() {
+        return taikhoanTextField;
+    }
+
+    public void setTaikhoanTextField(JTextField taikhoanTextField) {
+        this.taikhoanTextField = taikhoanTextField;
+    }
+                                        
 }

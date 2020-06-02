@@ -6,7 +6,7 @@ public class MainFrame extends JFrame{
     private static MainFrame instance = new MainFrame();
     public MainFrame(){
         setTitle("Listening English Pro");
-        setSize(800, 600);
+        setSize(850, 600);
         setResizable(false);
         setLocationRelativeTo(null);
         this.setVisible(true);

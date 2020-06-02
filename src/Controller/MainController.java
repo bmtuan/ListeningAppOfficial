@@ -5,7 +5,7 @@ public class MainController {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 MainFrame.getInstance().setVisible(true);
-                MainFrame.getInstance().add(MenuController.getInstance().getView());
+                MainFrame.getInstance().add(LoginController.getInstance().getView());
             }
         });
     }
