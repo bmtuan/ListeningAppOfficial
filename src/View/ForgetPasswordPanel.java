@@ -2,6 +2,7 @@ package src.View;
 
 import javax.swing.*;
 
+
 public class ForgetPasswordPanel extends View {
 
     private JButton CheckButton;
@@ -13,6 +14,7 @@ public class ForgetPasswordPanel extends View {
     public ForgetPasswordPanel() {
         initComponents();
     }                      
+
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
