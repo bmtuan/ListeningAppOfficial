@@ -5,7 +5,8 @@ public class User {
     private String UserID;
     private String Password;
     private String Gender;
-    private String DateOfBirth;
+	private String DateOfBirth;
+	public User(){}
 	public String getUserName() {
 		return UserName;
 	}
@@ -42,8 +43,12 @@ public class User {
 		Password = password;
 		Gender = gender;
 		DateOfBirth = dateOfBirth;
-    }
-    public User(){}
+	}
+	
+	public boolean isValid(){
+		return !(UserName.equals("") || Password.equals("") || DateOfBirth.equals("") || Gender.equals(""));
+	}
+    
 	@Override
 	public String toString() {
 		return "User [DateOfBirth=" + DateOfBirth + ", Gender=" + Gender + ", Password=" + Password + ", UserID="

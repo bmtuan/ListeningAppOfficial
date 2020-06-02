@@ -3,12 +3,12 @@ import javax.swing.*;
 
 public class LoginPanel extends View {
     private JButton LoginButton;
-    private ButtonGroup buttonGroup1;
+    private ButtonGroup genderGroup;
     private JPasswordField confirmPasswordField;
     private JComboBox<String> dayComboBox;
     private JRadioButton femaleRadioButton;
     private JLabel forgetLabel;
-    private JComboBox<String> jComboBox1;
+    private JComboBox<String> yearComboBox;
     private JLabel jLabel1;
     private JLabel jLabel10;
     private JLabel jLabel11;
@@ -19,7 +19,7 @@ public class LoginPanel extends View {
     private JLabel jLabel4;
     private JLabel jLabel5;
     private JLabel jLabel6;
-    private JLabel jLabel7;
+    private JLabel guestLabel; // guest login
     private JLabel jLabel8;
     private JLabel jLabel9;
     private JPanel jPanel1;
@@ -37,7 +37,7 @@ public class LoginPanel extends View {
      * Creates new form LoginPanel
      */
     public LoginPanel() {
-        buttonGroup1 = new ButtonGroup();
+        genderGroup = new ButtonGroup();
         jPanel1 = new JPanel();
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
@@ -45,7 +45,7 @@ public class LoginPanel extends View {
         taikhoanTextField = new JTextField();
         forgetLabel = new JLabel();
         LoginButton = new JButton();
-        jLabel7 = new JLabel();
+        guestLabel = new JLabel();
         loginPasswordField = new JPasswordField();
         jPanel2 = new JPanel();
         jLabel4 = new JLabel();
@@ -61,7 +61,7 @@ public class LoginPanel extends View {
         confirmPasswordField = new JPasswordField();
         dayComboBox = new JComboBox<>();
         monthComboBox = new JComboBox<>();
-        jComboBox1 = new JComboBox<>();
+        yearComboBox = new JComboBox<>();
         jLabel12 = new JLabel();
         maleRadioButton = new JRadioButton();
         femaleRadioButton = new JRadioButton();
@@ -79,11 +79,11 @@ public class LoginPanel extends View {
         jLabel1.setText("Listening Pro");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\user.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("Image/user.png")); // NOI18N
         jLabel2.setText("Tài khoản ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\password.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("Image/password.png")); // NOI18N
         jLabel3.setText("Mật khẩu");
 
 
@@ -92,9 +92,9 @@ public class LoginPanel extends View {
 
         LoginButton.setText("Đăng nhập");
 
-        jLabel7.setBackground(new java.awt.Color(204, 255, 204));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Đăng nhập là khách");
+        guestLabel.setBackground(new java.awt.Color(204, 255, 204));
+        guestLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        guestLabel.setText("Đăng nhập là khách");
 
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -108,7 +108,7 @@ public class LoginPanel extends View {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taikhoanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel7))
+                    .addComponent(guestLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -142,7 +142,7 @@ public class LoginPanel extends View {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(forgetLabel)
-                            .addComponent(jLabel7))))
+                            .addComponent(guestLabel))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -184,16 +184,16 @@ public class LoginPanel extends View {
 
         monthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" }));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "..." }));
+        yearComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "..." }));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Giới tính");
 
-        buttonGroup1.add(maleRadioButton);
+        genderGroup.add(maleRadioButton);
         maleRadioButton.setText("Nam");
 
-        buttonGroup1.add(femaleRadioButton);
+        genderGroup.add(femaleRadioButton);
         femaleRadioButton.setText("Nữ");
 
         signUpButton.setBackground(new java.awt.Color(51, 255, 51));
@@ -201,7 +201,7 @@ public class LoginPanel extends View {
         signUpButton.setForeground(new java.awt.Color(240, 240, 240));
         signUpButton.setText("Đăng ký");
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\background3.jpg")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon("Image/background3.jpg")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,7 +241,7 @@ public class LoginPanel extends View {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(maleRadioButton)
@@ -279,7 +279,7 @@ public class LoginPanel extends View {
                             .addComponent(jLabel10)
                             .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -372,6 +372,14 @@ public class LoginPanel extends View {
         this.monthComboBox = monthComboBox;
     }
 
+    public JComboBox<String> getYearComboBox() {
+        return yearComboBox;
+    }
+
+    public void setYearComboBox(JComboBox<String> yearComboBox) {
+        this.yearComboBox = yearComboBox;
+    }
+
     public JTextField getNameTextField() {
         return nameTextField;
     }
@@ -411,5 +419,19 @@ public class LoginPanel extends View {
     public void setTaikhoanTextField(JTextField taikhoanTextField) {
         this.taikhoanTextField = taikhoanTextField;
     }
+
+    public JLabel getGuestLabel(){
+        return guestLabel;
+    }
+    public void setGuestLabel(JLabel l){
+        guestLabel = l;
+    }
+    public void setGenderGroup(ButtonGroup g){
+        genderGroup = g;
+    }
+    public ButtonGroup getGenderGroup(){
+        return genderGroup;
+    }
+    
                                         
 }

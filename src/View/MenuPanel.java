@@ -36,7 +36,7 @@ public class MenuPanel extends View {
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 255));
 
-        startLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\start.png")); // NOI18N
+        startLabel1.setIcon(new javax.swing.ImageIcon("Image/start.png")); // NOI18N
         startLabel1.setDoubleBuffered(true);
         startLabel1.setName(""); // NOI18N
 
@@ -76,7 +76,7 @@ public class MenuPanel extends View {
         historyLabel2.setText("Lịch sử");
         historyLabel2.setDoubleBuffered(true);
 
-        historyLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\history.png")); // NOI18N
+        historyLabel1.setIcon(new javax.swing.ImageIcon("Image/history.png")); // NOI18N
         historyLabel1.setDoubleBuffered(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -107,7 +107,7 @@ public class MenuPanel extends View {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Lịch sử");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\history.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("Image/history.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -132,7 +132,7 @@ public class MenuPanel extends View {
 
         jPanel6.setBackground(new java.awt.Color(51, 204, 255));
 
-        helpLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\hint.png")); // NOI18N
+        helpLabel1.setIcon(new javax.swing.ImageIcon("Image/hint.png")); // NOI18N
         helpLabel1.setDoubleBuffered(true);
 
         helpLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -160,7 +160,7 @@ public class MenuPanel extends View {
 
         jPanel7.setBackground(new java.awt.Color(51, 204, 255));
 
-        exitLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\exit.png")); // NOI18N
+        exitLabel1.setIcon(new javax.swing.ImageIcon("Image/exit.png")); // NOI18N
         exitLabel1.setDoubleBuffered(true);
 
         exitLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

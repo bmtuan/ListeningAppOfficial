@@ -36,7 +36,7 @@ public class LevelPanel extends View {
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 600));
 
         backLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        backLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\back.png")); // NOI18N
+        backLabel.setIcon(new javax.swing.ImageIcon("Image/back.png")); // NOI18N
         backLabel.setText("Trở về");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
