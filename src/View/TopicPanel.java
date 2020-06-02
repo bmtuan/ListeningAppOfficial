@@ -73,17 +73,18 @@ public class TopicPanel extends JPanel{
 
         for(int i=0 ; i<3 ; i++){
             title[i] = new JLabel();
-            title[i].setFont(new Font("Arial", 0, 18));
+            title[i].setFont(new Font("Arial", 0, 24));
             title[i].setText(lm.getAllExerciseByLevel(level).get(i).getTitle());
             title[i].setPreferredSize(new Dimension(600, 60));
 
             information[i] = new JLabel();
-            information[i].setFont(new Font("Arial", 0, 14));
+            information[i].setFont(new Font("Arial", 0, 18));
+            information[i].setBackground(new java.awt.Color(102, 102, 255));
             information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +"     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
             information[i].setPreferredSize(new Dimension(600, 60));
 
             transcript[i] = new JLabel();
-            transcript[i].setFont(new Font("Arial", 0, 14));
+            transcript[i].setFont(new Font("Arial", 0, 18));
             transcript[i].setText(lm.getAllExerciseByLevel(level).get(i).getDescription());
             transcript[i].setPreferredSize(new Dimension(600, 60));
             }
@@ -138,6 +139,14 @@ public class TopicPanel extends JPanel{
 
         public void setTranscript(JLabel[] transcript) {
             this.transcript = transcript;
+        }
+
+        public JLabel getChooseTopicLabel() {
+            return chooseTopicLabel;
+        }
+
+        public void setChooseTopicLabel(JLabel chooseTopicLabel) {
+            this.chooseTopicLabel = chooseTopicLabel;
         }
 
 

@@ -48,11 +48,10 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 public class LessonController extends DocumentFilter
-        implements ActionListener, LineListener, KeyListener, DocumentListener {
+    implements ActionListener, LineListener, KeyListener, DocumentListener {
     private TopicController topicController;
     private ExerciseModel exerciseModel;
     private LessonPanel lessonPanel;
-
     public LessonController(ExerciseModel exerciseModel, LessonPanel lessonPanel, TopicController topicController)
             throws IOException {
         this.exerciseModel = exerciseModel;
