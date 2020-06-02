@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 import src.DAO.*;
@@ -152,6 +153,7 @@ public class LoginController implements ActionListener, MouseListener {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
+            frame.setAlwaysOnTop(true);
             frame.setVisible(true);
         }
         

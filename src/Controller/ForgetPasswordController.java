@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.*;
 
-public class ForgetPasswordController implements ActionListener, MouseListener {
+public class ForgetPasswordController implements ActionListener{
     private ForgetPasswordPanel fp;
     private static ForgetPasswordPanel view = new ForgetPasswordPanel();
     private static ForgetPasswordController instance = new ForgetPasswordController(view);
@@ -24,7 +24,6 @@ public class ForgetPasswordController implements ActionListener, MouseListener {
     public ForgetPasswordController(ForgetPasswordPanel fp) {
         this.fp = fp;
         fp.getCheckButton().addActionListener(this);
-        fp.getBackLabel().addMouseListener(this);
     }
 
     public ForgetPasswordPanel getLp() {
@@ -67,36 +66,36 @@ public class ForgetPasswordController implements ActionListener, MouseListener {
         
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+    // @Override
+    // public void mouseClicked(MouseEvent e) {
+    //     // TODO Auto-generated method stub
 
-    }
+    // }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        MainFrame.refresh(LoginController.getView());
+    // @Override
+    // public void mousePressed(MouseEvent e) {
+    //     MainFrame.refresh(LoginController.getView());
 
-    }
+    // }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
+    // @Override
+    // public void mouseReleased(MouseEvent e) {
+    //     // TODO Auto-generated method stub
 
-    }
+    // }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        JLabel l = (JLabel) e.getSource();
-        l.setForeground(Color.blue);
-        fp.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }
+    // @Override
+    // public void mouseEntered(MouseEvent e) {
+    //     JLabel l = (JLabel) e.getSource();
+    //     l.setForeground(Color.blue);
+    //     fp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    // }
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-        JLabel l = (JLabel) e.getSource();
-        l.setForeground(Color.black);
-        fp.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    // @Override
+    // public void mouseExited(MouseEvent e) {
+    //     JLabel l = (JLabel) e.getSource();
+    //     l.setForeground(Color.black);
+    //     fp.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
-    }
+    // }
 }

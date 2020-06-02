@@ -40,6 +40,8 @@ public class MenuController implements MouseListener {
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
+        x.setForeground(Color.black);
+        mp.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         String command = x.getText();
         if (command == ("Bắt đầu")){
             LevelController lc = new LevelController(new LevelPanel());
