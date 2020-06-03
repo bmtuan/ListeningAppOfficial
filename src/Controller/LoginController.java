@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
+
 import java.awt.HeadlessException;
 import java.awt.event.*;
 import src.DAO.*;
@@ -29,6 +29,7 @@ public class LoginController implements ActionListener, MouseListener {
         lp.getGuestLabel().addMouseListener(this);
         lp.getForgetLabel().addMouseListener(this);
         lp.getSignUpButton().addActionListener(this);
+        
 
     }
 
@@ -58,9 +59,6 @@ public class LoginController implements ActionListener, MouseListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        // lp.setVisible(false);
-        // MainFrame.getInstance().add(MenuController.getInstance().getView());
         if (e.getSource() == lp.getLoginButton()) {
             String userName = lp.getTaikhoanTextField().getText();
             char[] passwordChars = lp.getLoginPasswordField().getPassword();
@@ -70,8 +68,15 @@ public class LoginController implements ActionListener, MouseListener {
             if (!userName.equals("")) {
                 try {
                     User u = UserDAO.getUser(userName);
-                    if (u != null && !(password.equals("")) && u.getPassword().equals(password))
+                    if (u != null && u.getPassword().equals(password)){
                         MainFrame.refresh(MenuController.getInstance().getView());
+                        lp.getTaikhoanTextField().setText("");
+                        lp.getLoginPasswordField().setText("");
+                        MenuController.getInstance().getView().getShowNameLabel().setText(u.getUserName());
+                        MenuController.getInstance().getView().getShowUserLabel().setText(u.getUserID());
+                        MenuController.getInstance().getView().getShowDOBLabel().setText(u.getDateOfBirth());
+                        MenuController.getInstance().getView().getShowGenderLabel().setText(u.getGender());
+                    }
                     else
                         JOptionPane.showMessageDialog(lp, "Tai khoan hoac mat khau khong hop le!");
                 } catch (SQLException e1) {
@@ -102,24 +107,36 @@ public class LoginController implements ActionListener, MouseListener {
             else
                 gender = "Nữ";
             User u = new User(name, userName, password, day + "/" + month + "/" + year, gender);
-            // if (u.isValid() && confirmPassword.equals(password))
-            //     JOptionPane.showMessageDialog(lp, "Dang ky thanh cong!", null, 1);
-            // else if (!confirmPassword.equals(password))
-            //     JOptionPane.showMessageDialog(lp, "Mat khau xac nhan khong hop le!", null, 1);
-            // else 
-            //     JOptionPane.showMessageDialog(lp, "Vui long dien day du thong tin", null, 1);
+            if (u.isValid() && confirmPassword.equals(password)){
+                JOptionPane.showMessageDialog(lp, "Dang ky thanh cong!", null, 1);
+                lp.getNameTextField().setText("");
+                lp.getSignUpUserTextField().setText("");
+                lp.getSignUpPasswordField().setText("");
+                lp.getConfirmPasswordField().setText("");
+                lp.getDayComboBox().setSelectedIndex(0);
+                lp.getMonthComboBox().setSelectedIndex(0);
+                lp.getYearComboBox().setSelectedIndex(0);
+                lp.getGenderGroup().clearSelection();
+            }
+            else if (!confirmPassword.equals(password))
+                JOptionPane.showMessageDialog(lp, "Mat khau xac nhan khong hop le!", null, 1);
+            else 
+                JOptionPane.showMessageDialog(lp, "Vui long dien day du thong tin", null, 1);
 
             try {
                 if (u.isValid() && confirmPassword.equals(password) && UserDAO.getUser(u.getUserID()) == null) {
-                    try {
                         UserDAO.addUser(u);
                         JOptionPane.showMessageDialog(lp, "Dang ky thanh cong!", null, 1);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }
-
+                        lp.getNameTextField().setText("");
+                        lp.getSignUpUserTextField().setText("");
+                        lp.getSignUpPasswordField().setText("");
+                        lp.getConfirmPasswordField().setText("");
+                        lp.getDayComboBox().setSelectedIndex(0);
+                        lp.getMonthComboBox().setSelectedIndex(0);
+                        lp.getYearComboBox().setSelectedIndex(0);
+                        lp.getGenderGroup().clearSelection();
                 } 
-                else if (u != null)
+                else if (UserDAO.getUser(u.getUserID()) == null)
                     JOptionPane.showMessageDialog(lp, "Ten dang nhap da ton tai!", null, 1);
                 else if (!u.isValid())
                     JOptionPane.showMessageDialog(lp, "Vui long dien day du thong tin dang ky!", null, 1);

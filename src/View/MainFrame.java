@@ -1,5 +1,8 @@
 package src.View;
 import javax.swing.ImageIcon;
+
+import java.awt.event.*;
+
 import java.awt.*;
 import javax.swing.*;
 public class MainFrame extends JFrame{
@@ -10,7 +13,16 @@ public class MainFrame extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                int input = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc chắn muốn thoát?", null,
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (input == 0)
+                    System.exit(0);
+            }
+        });
     }
     public static Container getInstance(){
         return instance.getContentPane();
