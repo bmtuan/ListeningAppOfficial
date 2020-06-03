@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
  import java.awt.Cursor;
  import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import src.Model.HistoryModel;
 import src.View.*;
@@ -53,8 +54,10 @@ public class MenuController implements MouseListener {
             MainFrame.refresh(new HelpPanel());
         }
         else {
-            LoginController lc = new LoginController(new LoginPanel());
-            MainFrame.refresh(lc.getLp());
+            int confirm = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát chứ?", "Xác nhận",JOptionPane.YES_NO_OPTION , JOptionPane.DEFAULT_OPTION, (new javax.swing.ImageIcon("Image\\why.png")));
+            if (confirm == 0 ){
+                System.exit(0);
+            }
         }
     }
 

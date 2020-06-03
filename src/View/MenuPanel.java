@@ -1,31 +1,34 @@
-
 package src.View;
-import javax.swing.*;
-// import org.netbeans.lib.awtextra;
-public class MenuPanel extends View {
-    JPanel jPanel2,jPanel3,jPanel4,jPanel5,jPanel6,jPanel7;
-    JLabel startLabel1,startLabel2,historyLabel2,historyLabel1,jLabel5,jLabel6,helpLabel1,helpLabel2,exitLabel1,exitLabel2,jLabel11;
+public class MenuPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form MenuPanel
      */
-    public MenuPanel(){
-        jPanel2 = new JPanel();
-        jPanel3 = new JPanel();
-        startLabel1 = new JLabel();
-        startLabel2 = new JLabel();
-        jPanel4 = new  JPanel();
-        historyLabel2 =  new JLabel();
-        historyLabel1 =  new JLabel();
-        jPanel5 = new JPanel();
-        jLabel5 = new  JLabel();
-        jLabel6 = new  JLabel();
-        jPanel6 = new  JPanel();
-        helpLabel1 = new  JLabel();
-        helpLabel2 = new JLabel();
-        jPanel7 = new JPanel();
-        exitLabel1 = new JLabel();
-        exitLabel2 = new JLabel();
-        jLabel11 = new JLabel();
+    public MenuPanel() {
+        initComponents();
+    }                     
+    private void initComponents() {
+
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        startLabel1 = new javax.swing.JLabel();
+        startLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        historyLabel2 = new javax.swing.JLabel();
+        historyLabel1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        helpLabel1 = new javax.swing.JLabel();
+        helpLabel2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        exitLabel1 = new javax.swing.JLabel();
+        exitLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        LoginPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -198,49 +201,92 @@ public class MenuPanel extends View {
         jLabel11.setDoubleBuffered(true);
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 240, 70));
 
+        LoginPanel.setBackground(new java.awt.Color(187, 255, 248));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\background3.jpg")); // NOI18N
+
+        javax.swing.GroupLayout LoginPanelLayout = new javax.swing.GroupLayout(LoginPanel);
+        LoginPanel.setLayout(LoginPanelLayout);
+        LoginPanelLayout.setHorizontalGroup(
+            LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+        );
+        LoginPanelLayout.setVerticalGroup(
+            LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginPanelLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(LoginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(LoginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+    }// </editor-fold>                        
+
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JPanel LoginPanel;
+    private javax.swing.JLabel exitLabel1;
+    private javax.swing.JLabel exitLabel2;
+    private javax.swing.JLabel helpLabel1;
+    private javax.swing.JLabel helpLabel2;
+    private javax.swing.JLabel historyLabel1;
+    private javax.swing.JLabel historyLabel2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel startLabel1;
+    private javax.swing.JLabel startLabel2;
+    // End of variables declaration                   
+    public javax.swing.JLabel getExitLabel2() {
+        return exitLabel2;
     }
 
-public JLabel getStartLabel2() {
-    return startLabel2;
-}
+    public void setExitLabel2(javax.swing.JLabel exitLabel2) {
+        this.exitLabel2 = exitLabel2;
+    }
 
-public void setStartLabel2(JLabel startLabel2) {
-    this.startLabel2 = startLabel2;
-}
+    public javax.swing.JLabel getHelpLabel2() {
+        return helpLabel2;
+    }
 
-public JLabel getHistoryLabel2() {
-    return historyLabel2;
-}
+    public void setHelpLabel2(javax.swing.JLabel helpLabel2) {
+        this.helpLabel2 = helpLabel2;
+    }
 
-public void setHistoryLabel2(JLabel historyLabel2) {
-    this.historyLabel2 = historyLabel2;
-}
+    public javax.swing.JLabel getHistoryLabel2() {
+        return historyLabel2;
+    }
 
-public JLabel getHelpLabel2() {
-    return helpLabel2;
-}
+    public void setHistoryLabel2(javax.swing.JLabel historyLabel2) {
+        this.historyLabel2 = historyLabel2;
+    }
 
-public void setHelpLabel2(JLabel helpLabel2) {
-    this.helpLabel2 = helpLabel2;
-}
+    public javax.swing.JLabel getStartLabel2() {
+        return startLabel2;
+    }
 
-public JLabel getExitLabel2() {
-    return exitLabel2;
-}
-
-public void setExitLabel2(JLabel exitLabel2) {
-    this.exitLabel2 = exitLabel2;
-}
+    public void setStartLabel2(javax.swing.JLabel startLabel2) {
+        this.startLabel2 = startLabel2;
+    }
 }

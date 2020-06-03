@@ -32,7 +32,10 @@ public class TopicController implements  MouseListener {
     }
 
     public TopicController(LevelModel levelModel, TopicPanel topicPanel) {
-
+        for (int i = 0; i < topicPanel.getTitle().length; i++) {
+            topicPanel.getTitle()[i].addMouseListener(this);
+        }
+        topicPanel.getBackLabel().addMouseListener(this);
         this.levelModel = levelModel;
         this.topicPanel = topicPanel;
     }
@@ -52,6 +55,11 @@ public class TopicController implements  MouseListener {
         String title = x.getText();
         int level = levelModel.getLevel();
         Exercise ex;
+        if (x.getText()=="Trở về"){
+            topicPanel.setVisible(false);
+            LevelController lc = new LevelController(new LevelPanel());
+            MainFrame.refresh(lc.getLevelPanel());
+        } else 
         try {
             ex = ExerciseDAO.getExerciseByTitle(title, level);
             // ex = ExerciseDAO.getExerciseByTitle("Go to bed early is better for us", 1);
