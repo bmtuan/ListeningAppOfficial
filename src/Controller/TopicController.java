@@ -55,7 +55,11 @@ public class TopicController implements  MouseListener {
         int level = levelModel.getLevel();
         Exercise ex;
         if (x.getText()=="Trở về"){
+<<<<<<< HEAD
             //topicPanel.setVisible(false);
+=======
+            topicPanel.setVisible(false);
+>>>>>>> e5b351c3552bab8d7c548df0fc0c68d20236e6ce
             LevelController lc = new LevelController(new LevelPanel());
             MainFrame.refresh(lc.getLevelPanel());
         } else 

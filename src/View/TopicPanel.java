@@ -16,6 +16,7 @@ public class TopicPanel extends JPanel{
     private JLabel[] information;
     private JLabel[] title;
     private JLabel[] transcript;
+    private JPanel[] panel0,panel1, panel2,panel3;
     private JSeparator[] separators;
 
     public TopicPanel(int level) {
@@ -27,6 +28,10 @@ public class TopicPanel extends JPanel{
         chooseTopicLabel = new JLabel();
         topic = new JPanel[3];
         title = new JLabel[3];
+        panel0 = new JPanel[3];
+        panel1 = new JPanel[3];
+        panel2 = new JPanel[3];
+        panel3 = new JPanel[3];
         information = new JLabel[3];
         transcript = new JLabel[3];
         separators = new JSeparator[2];
@@ -73,82 +78,103 @@ public class TopicPanel extends JPanel{
 
         for(int i=0 ; i<3 ; i++){
             title[i] = new JLabel();
+            // title[i].setBackground(new Color(51,204,255));
             title[i].setFont(new Font("Arial", 0, 24));
             title[i].setText(lm.getAllExerciseByLevel(level).get(i).getTitle());
-            title[i].setPreferredSize(new Dimension(600, 60));
+            title[i].setPreferredSize(new Dimension(600, 70));
 
             information[i] = new JLabel();
             information[i].setFont(new Font("Arial", 0, 18));
             information[i].setBackground(new java.awt.Color(102, 102, 255));
             information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +"     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
-            information[i].setPreferredSize(new Dimension(600, 60));
+            information[i].setPreferredSize(new Dimension(600, 70));
 
             transcript[i] = new JLabel();
             transcript[i].setFont(new Font("Arial", 0, 18));
             transcript[i].setText(lm.getAllExerciseByLevel(level).get(i).getDescription());
             transcript[i].setPreferredSize(new Dimension(600, 60));
             }
+        // set back ground
+        for(int i=0 ; i<3 ;i++){
+        // panel0 này để cách ra khoảng trống ban đầu
+            panel0[i] = new JPanel();
+            panel0[i].setPreferredSize(new Dimension(600, 0));
 
-            for(int i=0 ; i<3 ;i++){
-            topic[i] = new JPanel();
-            topic[i].setPreferredSize(new Dimension(600, 200));
-            topic[i].setLayout(new BoxLayout(topic[i], BoxLayout.PAGE_AXIS));
-            topic[i].add(title[i]);
-            topic[i].add(information[i]);
-            topic[i].add(transcript[i]);
-            }
+            panel1[i] = new JPanel();
+            panel1[i].setBackground(new Color(255,204,153));
+            panel1[i].setPreferredSize(new Dimension(600, 30));
+            panel1[i].add(title[i]);
+
+            panel2[i] = new JPanel();
+            panel2[i].setBackground(new Color(255,204,204));
+            panel2[i].setPreferredSize(new Dimension(600, 30));
+            panel2[i].add(information[i]);
+
+            panel3[i] = new JPanel();
+            panel3[i].setBackground(new Color(204,204,255));
+            panel3[i].setPreferredSize(new Dimension(600, 40));
+            panel3[i].add(transcript[i]);
+        }
+        
+        for(int i=0 ; i<3 ;i++){
+        topic[i] = new JPanel();
+        topic[i].setPreferredSize(new Dimension(600, 200));
+        topic[i].setLayout(new BoxLayout(topic[i], BoxLayout.PAGE_AXIS));
+        topic[i].add(panel0[i]);
+        topic[i].add(panel1[i]);
+        topic[i].add(panel2[i]);
+        topic[i].add(panel3[i]);
+        }
             
-            for(int i=0 ; i<3 ;i++){
-                panelRight.add(topic[i]);
-                if(i != 2){
-                    separators[i] = new JSeparator();
-                    panelRight.add(separators[i]);
-                }
+        for(int i=0 ; i<3 ;i++){
+            panelRight.add(topic[i]);
+            if(i != 2){
+                separators[i] = new JSeparator();
+                panelRight.add(separators[i]);
             }
-
-            add(panelRight);
         }
 
-        public JLabel getBackLabel() {
-            return backLabel;
-        }
+        add(panelRight);
+    }
 
-        public void setBackLabel(JLabel backLabel) {
-            this.backLabel = backLabel;
-        }
+    public JLabel getBackLabel() {
+        return backLabel;
+    }
 
-        public JLabel[] getInformation() {
-            return information;
-        }
+    public void setBackLabel(JLabel backLabel) {
+        this.backLabel = backLabel;
+    }
 
-        public void setInformation(JLabel[] information) {
-            this.information = information;
-        }
+    public JLabel[] getInformation() {
+        return information;
+    }
 
-        public JLabel[] getTitle() {
-            return title;
-        }
+    public void setInformation(JLabel[] information) {
+        this.information = information;
+    }
 
-        public void setTitle(JLabel[] title) {
-            this.title = title;
-        }
+    public JLabel[] getTitle() {
+        return title;
+    }
 
-        public JLabel[] getTranscript() {
-            return transcript;
-        }
+    public void setTitle(JLabel[] title) {
+        this.title = title;
+    }
 
-        public void setTranscript(JLabel[] transcript) {
-            this.transcript = transcript;
-        }
+    public JLabel[] getTranscript() {
+        return transcript;
+    }
 
-        public JLabel getChooseTopicLabel() {
-            return chooseTopicLabel;
-        }
+    public void setTranscript(JLabel[] transcript) {
+        this.transcript = transcript;
+    }
 
-        public void setChooseTopicLabel(JLabel chooseTopicLabel) {
-            this.chooseTopicLabel = chooseTopicLabel;
-        }
+    public JLabel getChooseTopicLabel() {
+        return chooseTopicLabel;
+    }
 
+    public void setChooseTopicLabel(JLabel chooseTopicLabel) {
+        this.chooseTopicLabel = chooseTopicLabel;
+    }
 
 }
-     
