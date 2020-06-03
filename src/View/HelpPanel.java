@@ -53,7 +53,7 @@ public class HelpPanel extends View implements MouseListener {
 
         backLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backLabel
-                .setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\back.png")); // NOI18N
+                .setIcon(new javax.swing.ImageIcon("Image\\back.png")); // NOI18N
         backLabel.setText("Trở về");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -111,7 +111,8 @@ public class HelpPanel extends View implements MouseListener {
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         this.setVisible(false);
-        MainFrame.getInstance().add(MenuController.getInstance().getView());
+        MenuController menuController = new MenuController(new MenuPanel());
+        MainFrame.getInstance().add(menuController.getView());
     }
 
     @Override

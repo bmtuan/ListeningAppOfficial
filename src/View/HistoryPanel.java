@@ -143,7 +143,8 @@ public class HistoryPanel extends View implements MouseListener {
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         this.setVisible(false);
-        MainFrame.getInstance().add(MenuController.getInstance().getView());
+        MenuController menuController = new MenuController(new MenuPanel());
+        MainFrame.getInstance().add(menuController.getView());
     }
 
     @Override

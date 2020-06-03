@@ -2,31 +2,26 @@ package src.Controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
- import java.awt.Cursor;
- import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import src.Model.HistoryModel;
 import src.View.*;
 
 public class MenuController implements MouseListener {
-    private MenuController() {
-    }
+    public MenuController() {}
     private MenuPanel mp;
-    private static MenuPanel view = new MenuPanel();
-    private static MenuController instance = new MenuController(view);
-
-    private MenuController(MenuPanel v) {
+    
+    public MenuController(MenuPanel v) {
         this.mp = v;
         v.getStartLabel2().addMouseListener(this);
         v.getHelpLabel2().addMouseListener(this);
         v.getHistoryLabel2().addMouseListener(this);
         v.getExitLabel2().addMouseListener(this);
     }
-
-    public static MenuController getInstance() {
-        return instance;
-    }
+    
 
     public MenuPanel getView() {
         return this.mp;
@@ -55,8 +50,9 @@ public class MenuController implements MouseListener {
             MainFrame.refresh(new HelpPanel());
         }
         else {
-            LoginController lc = new LoginController(new LoginPanel());
-            MainFrame.refresh(lc.getLp());
+            int input = JOptionPane.showConfirmDialog(null,"Bạn có chắc chắn muốn thoát?", null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (input == 0)
+                System.exit(0);
         }
     }
 

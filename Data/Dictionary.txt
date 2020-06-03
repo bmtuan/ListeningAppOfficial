@@ -4240,8 +4240,6 @@ bazaar
 bazaars
 bazooka
 bazookas
-bbc
-bc
 be
 beach
 beachcomber

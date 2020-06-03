@@ -14,7 +14,6 @@ import java.time.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-// import jdk.internal.org.objectweb.asm.Label;
 import src.View.*;
 import src.Model.*;
 import src.DAO.ExerciseDAO;
@@ -56,7 +55,7 @@ public class TopicController implements  MouseListener {
         int level = levelModel.getLevel();
         Exercise ex;
         if (x.getText()=="Trở về"){
-            topicPanel.setVisible(false);
+            //topicPanel.setVisible(false);
             LevelController lc = new LevelController(new LevelPanel());
             MainFrame.refresh(lc.getLevelPanel());
         } else 

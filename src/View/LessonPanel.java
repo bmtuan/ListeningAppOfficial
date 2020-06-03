@@ -1,12 +1,11 @@
-package  src.View;
+package src.View;
 
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.XYDataset;
 import java.awt.BasicStroke;
@@ -41,13 +40,13 @@ public class LessonPanel extends JPanel{
     private XYSeriesCollection dataset;
     private JFreeChart chart;
     private ChartPanel chartPanel;
-    private JButton bNext;
-    private JButton bListen;
-    private JButton bPlay;
+    private JLabel bNext;
+    private JLabel bListen;
+    private JLabel bPlay;
     JLabel hint;
     private JComboBox trackBox;
     Box boxContainer;
-    private JButton bBack;
+    private JLabel bBack;
     public LessonPanel(){
         initComponents();
     }
@@ -57,36 +56,37 @@ public class LessonPanel extends JPanel{
 
         // panel for back button
         JPanel buttonPanel = new JPanel();
-        bBack = new JButton("Back");
+        bBack = new JLabel("Trở về");
+        bBack.setFont(new java.awt.Font("Tahoma", 0, 18));
+        bBack.setIcon(new ImageIcon("Image/back.png", "back button"));
         
         boxContainer = Box.createHorizontalBox();
-        boxContainer.add(Box.createHorizontalStrut(30));
-        bBack.setPreferredSize(new Dimension(60, boxContainer.getHeight()));
         boxContainer.add(bBack);
-        //bBack.setPreferredSize(new Dimension(80, boxContainer.getHeight()));
-        boxContainer.setPreferredSize(new Dimension(750, 50));
+        boxContainer.setPreferredSize(new Dimension(850, 50));
         buttonPanel.add(boxContainer);
-        buttonPanel.setPreferredSize(new Dimension(800, 100));
-        
+        buttonPanel.setPreferredSize(new Dimension(850, 100));
+        //buttonPanel.setBackground(new Color(240,248,255));
+        buttonPanel.setBackground(new Color(204, 204, 255));
         // chart panel
         dataset = createDataset(0, null);
         chart = createChart(dataset, 1);
         chartPanel = new ChartPanel(chart);
-        chartPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
-        chartPanel.setBackground(Color.white);
+        chartPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(240,248,255)));
         chartPanel.setDomainZoomable(false);
         chartPanel.setRangeZoomable(false);
+        //chartPanel.setBackground(new Color(245,255,250));
         
         // panel for user typing
         JPanel textPanel = new JPanel();
         text = new JTextField();
         text.setPreferredSize(new Dimension(700, 30));
         text.setTransferHandler(null);
+        text.setBackground(new Color(255,250,250));
         textPanel.add(text);
         hint = new JLabel();
         textPanel.add(hint);
-
-
+        //textPanel.setBackground(new Color(240,248,255));
+        textPanel.setBackground(new Color(204, 204, 255));
         // panel containing answerPanel and nextPanel 
         JPanel audioPanel = new JPanel();
         audioPanel.setPreferredSize(new Dimension(600, 300));
@@ -95,18 +95,30 @@ public class LessonPanel extends JPanel{
         ans = new JTextPane();
         ans.setEditable(false);        
         ans.setPreferredSize(new Dimension(600, 30));
-
         ans.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
- 
+        //ans.setBackground(new Color(240,248,255));
+        ans.setBackground(new Color(204, 204, 255));
         // Containing next and listen button
         nextPanel = new JPanel();
-        bNext = new JButton("Next");
-        bListen = new JButton("Listen");
-        //bNext.addActionListener(lessonController);
-        //bListen.addActionListener(lessonController);
+        bNext = new JLabel("Track tiếp theo");
+        bNext.setFont(new java.awt.Font("Tahoma", 0, 18));
+        bNext.setIcon(new ImageIcon("Image/fast_forward_25px.png", "next"));
+        bListen = new JLabel("Nghe lại");
+        bListen.setFont(new java.awt.Font("Tahoma", 0, 18));
+        bListen.setIcon(new ImageIcon("Image/audio_25px.png", "listen"));
+
+
+    
         nextPanel.add(bNext);
+        // adding space between two labels
+        for (int i = 0; i < 20; ++i)
+            nextPanel.add(new JLabel());
+        //
         nextPanel.add(bListen);
+        //nextPanel.setBackground(new Color(240,248,255));
+        nextPanel.setBackground(new Color(204, 204, 255));
         nextPanel.setVisible(false);
+
         // Containing text area to show transcript when user types correctly
         JPanel answerPanel = new JPanel();
         answerPanel.setLayout(new BoxLayout(answerPanel, BoxLayout.Y_AXIS));
@@ -118,23 +130,24 @@ public class LessonPanel extends JPanel{
         JPanel musicPanel = new JPanel();
         progressBar = new JProgressBar();
         progressBar.setValue(0);
-        progressBar.setPreferredSize(new Dimension(650, 5));
+        progressBar.setPreferredSize(new Dimension(700, 5));
         currentTime = new JLabel("00:00");
         trackLen = new JLabel("00:00");
         
         
-        bPlay = new JButton();
-        ImageIcon playIcon = new ImageIcon("Image/play_25px"
-                + ".png", "play button");
+        bPlay = new JLabel();
+        ImageIcon playIcon = new ImageIcon("Image/play_25px.png", "play button");
         bPlay.setIcon(playIcon);
         bPlay.setBackground(Color.white);
-        bPlay.setPreferredSize(new Dimension(28, 30));
+        bPlay.setPreferredSize(new Dimension(30, 30));
         //bPlay.addActionListener(lessonController);
         musicPanel.add(bPlay, LEFT_ALIGNMENT);
         musicPanel.add(currentTime);
         musicPanel.add(progressBar);
         musicPanel.add(trackLen);
-        
+        //musicPanel.setBackground(new Color(250,250,210));
+        musicPanel.setBackground(new Color(176,224,230));
+        musicPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(240,248,255)));
         
         
         
@@ -146,7 +159,7 @@ public class LessonPanel extends JPanel{
         this.add(musicPanel);
         this.add(audioPanel);
         this.add(textPanel);
-        this.setBackground(Color.white);
+        //this.setBackground(Color.white);
 
     }
 
@@ -174,7 +187,7 @@ public class LessonPanel extends JPanel{
         this.trackBox = trackBox;
     }
     
-    public JButton getbBack() {
+    public JLabel getbBack() {
         return bBack;
     }
     
@@ -245,27 +258,27 @@ public class LessonPanel extends JPanel{
         this.chartPanel = chartPanel;
     }
 
-    public JButton getbNext() {
+    public JLabel getbNext() {
         return bNext;
     }
 
-    public void setbNext(JButton bNext) {
+    public void setbNext(JLabel bNext) {
         this.bNext = bNext;
     }
 
-    public JButton getbListen() {
+    public JLabel getbListen() {
         return bListen;
     }
 
-    public void setbListen(JButton bListen) {
+    public void setbListen(JLabel bListen) {
         this.bListen = bListen;
     }
 
-    public JButton getbPlay() {
+    public JLabel getbPlay() {
         return bPlay;
     }
 
-    public void setbPlay(JButton bPlay) {
+    public void setbPlay(JLabel bPlay) {
         this.bPlay = bPlay;
     }
 
@@ -308,8 +321,8 @@ public class LessonPanel extends JPanel{
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
 
         plot.setRenderer(renderer);
-        plot.setBackgroundPaint(Color.white);
-
+        plot.setBackgroundPaint(new Color(250,250,210));
+        //plot.setBackgroundPaint(new Color(176,224,230));
         //plot.setRangeGridlinesVisible(true);
        // plot.setRangeGridlinePaint(Color.BLACK);
 

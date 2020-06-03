@@ -6,7 +6,7 @@ public class History {
     private String Topic;
     private LocalDateTime date;
     private int Score;
-
+    private String userName;
     public History() {
     }
 
@@ -43,18 +43,28 @@ public class History {
     public void setScore(int Score) {
         this.Score = Score;
     }
+    
 
-    public History(int Level, String Topic, int Score, LocalDateTime date) {
+    public History(int Level, String Topic, int Score, LocalDateTime date, String userName) {
         this.Level = Level;
         this.Topic = Topic;
         this.date = date;
         this.Score = Score;
+        this.userName = userName;
     }
 
     @Override
     public String toString() {
         return "History [" + "Level =" + Level +", Score = " + Score + ", Topic =" + Topic + ", date =" + date
-                + "]";
+                + ", UserName = " + userName + "]";
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
     
 }

@@ -42,7 +42,7 @@ public class TopicPanel extends JPanel{
         panelLeft.setPreferredSize(new Dimension(200, 600));
 
         backLabel.setFont(new Font("Arial", 0, 18));
-        backLabel.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\back.png")); // NOI18N
+        backLabel.setIcon(new ImageIcon("Image\\back.png")); // NOI18N
         backLabel.setText("Trở về");
 
         chooseTopicLabel.setFont(new Font("Arial", 0, 24)); // NOI18N

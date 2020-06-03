@@ -12,7 +12,6 @@ import src.Model.LevelModel;
 
 public class LevelController implements MouseListener {
     private LevelPanel levelPanel;
-
     public LevelPanel getLevelPanel() {
         return levelPanel;
     }
@@ -49,8 +48,8 @@ public class LevelController implements MouseListener {
             TopicController tc1 = new TopicController(new LevelModel(3), new TopicPanel(3));
             MainFrame.refresh(tc1.getTopicPanel());
         } else if (command == "Trở về"){
-            levelPanel.setVisible(false);
-            MainFrame.getInstance().add(MenuController.getInstance().getView());
+            MenuController menuController = new MenuController(new MenuPanel());
+            MainFrame.refresh(menuController.getView());
         }
 
     }

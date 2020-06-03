@@ -1,6 +1,8 @@
 
 package src.View;
 import javax.swing.*;
+
+import src.Model.User;
 // import org.netbeans.lib.awtextra;
 public class MenuPanel extends View {
     JPanel jPanel2,jPanel3,jPanel4,jPanel5,jPanel6,jPanel7;
@@ -358,5 +360,11 @@ public class MenuPanel extends View {
 
     public void setShowUserLabel(JLabel showUserLabel) {
         this.showUserLabel = showUserLabel;
+    }
+    public void showUserInfo(User user){
+        showNameLabel.setText("Họ và tên: " + user.getUserName());
+        showUserLabel.setText("Tên tài khoản: " + user.getUserName());
+        showDOBLabel.setText("Ngày sinh" + user.getDateOfBirth());
+        showGenderLabel.setText("Giới tính: " + user.getGender());
     }
 }
