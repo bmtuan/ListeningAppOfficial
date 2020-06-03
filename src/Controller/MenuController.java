@@ -50,16 +50,10 @@ public class MenuController implements MouseListener {
             MainFrame.refresh(new HelpPanel());
         }
         else {
-<<<<<<< HEAD
-            int input = JOptionPane.showConfirmDialog(null,"Bạn có chắc chắn muốn thoát?", null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            if (input == 0)
-                System.exit(0);
-=======
             int confirm = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát chứ?", "Xác nhận",JOptionPane.YES_NO_OPTION , JOptionPane.DEFAULT_OPTION, (new javax.swing.ImageIcon("Image\\why.png")));
             if (confirm == 0 ){
                 System.exit(0);
             }
->>>>>>> e5b351c3552bab8d7c548df0fc0c68d20236e6ce
         }
     }
 
