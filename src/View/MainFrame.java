@@ -17,8 +17,8 @@ public class MainFrame extends JFrame{
         this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e){
                 int input = JOptionPane.showConfirmDialog(null,
-                        "Bạn có chắc chắn muốn thoát?", null,
-                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                        "Bạn có chắc chắn muốn thoát?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,new javax.swing.ImageIcon("Image\\why.png"));
                 if (input == 0)
                     System.exit(0);
             }

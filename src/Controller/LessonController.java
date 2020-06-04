@@ -1,6 +1,5 @@
 package src.Controller;
 
-import src.View.LessonPanel;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
@@ -47,7 +46,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import java.awt.event.*;
 
 public class LessonController extends DocumentFilter
-        implements ActionListener, LineListener, KeyListener, DocumentListener, MouseListener {
+    implements ActionListener, LineListener, KeyListener, DocumentListener, MouseListener {
     private TopicController topicController;
     private ExerciseModel exerciseModel;
     private LessonPanel lessonPanel;
@@ -409,9 +408,9 @@ public class LessonController extends DocumentFilter
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1));
-        String sql = "SELECT exercise.HighScore FROM test.exercise WHERE exercise.Title = " + "\"" + history.getTopic()
+        String sql = "SELECT test.exercise.HighScore FROM test.exercise WHERE exercise.Title = " + "\"" + history.getTopic()
                 + "\"";
-        String sql1 = "UPDATE exercise SET exercise.HighScore =" + history.getScore() + " WHERE exercise.Title = "
+        String sql1 = "UPDATE test.exercise SET exercise.HighScore =" + history.getScore() + " WHERE exercise.Title = "
                 + "\"" + history.getTopic() + "\"";
         Connection connection = JDBCConnection.getJDBCConnection();
         PreparedStatement prepareStatement;
@@ -421,14 +420,8 @@ public class LessonController extends DocumentFilter
             statement = connection.createStatement();
             ResultSet rs = prepareStatement.executeQuery();
             while (rs.next()) {
-                if (rs.getInt("HighScore") < history.getScore()) {
-                    statement.executeUpdate(sql1);
-                }
-            }
-            while (rs.next()) {
                 if (history.getScore() > rs.getInt("HighScore")) {
                     statement.executeUpdate(sql1);
-                    System.out.println(rs.getInt("HighScore"));
                 }
             }
         } catch (SQLException e) {
@@ -457,16 +450,18 @@ public class LessonController extends DocumentFilter
             source.setForeground(Color.black);
             lessonPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             exerciseModel.stopAudio();
+            int level = exerciseModel.getCurrentExercise().getLevel();
+            TopicController tp = new TopicController(new LevelModel(level), new TopicPanel(level));
             if (exerciseModel.getCurrentTrack() != exerciseModel.getCurrentExercise().getListTrack().size() - 1
                     || exerciseModel.getCurrentWordPos() != exerciseModel.getWords().length) {
                 int input = JOptionPane.showConfirmDialog(null,
-                        "Bạn có muốn thoát? Bài làm của bạn sẽ bị hủy", null,
-                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                        "Bạn có muốn thoát? Bài làm của bạn sẽ bị hủy", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,new javax.swing.ImageIcon("Image\\why.png"));
                 if (input == 0)
-                    MainFrame.refresh(topicController.getTopicPanel());
+                    MainFrame.refresh(tp.getTopicPanel());
 
             } else
-                MainFrame.refresh(topicController.getTopicPanel());
+                MainFrame.refresh(tp.getTopicPanel());
         }
         else if (source == lessonPanel.getbPlay()){
             SwingUtilities.invokeLater(new Runnable() {

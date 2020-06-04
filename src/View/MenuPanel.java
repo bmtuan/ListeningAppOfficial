@@ -168,7 +168,7 @@ public class MenuPanel extends javax.swing.JPanel {
 
         exitLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exitLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        exitLabel2.setText("Đăng xuất");
+        exitLabel2.setText("Thoát");
         exitLabel2.setDoubleBuffered(true);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
