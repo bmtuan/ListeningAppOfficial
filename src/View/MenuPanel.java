@@ -204,7 +204,7 @@ public class MenuPanel extends javax.swing.JPanel {
         LoginPanel.setBackground(new java.awt.Color(187, 255, 248));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Desktop\\ListeningAppOfficial\\Image\\background3.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("Image\\background3.jpg")); // NOI18N
 
         javax.swing.GroupLayout LoginPanelLayout = new javax.swing.GroupLayout(LoginPanel);
         LoginPanel.setLayout(LoginPanelLayout);
