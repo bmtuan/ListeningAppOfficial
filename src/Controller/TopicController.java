@@ -71,7 +71,7 @@ public class TopicController implements  MouseListener {
             else 
                 lp.getTrackLen().setText("00:0" + Integer.toString(trackLen));
             try {
-                LessonController lc = new LessonController(em, lp, this);
+                LessonController lc = new LessonController(em, lp);
                 MainFrame.refresh(lp);
             } catch (IOException e1) {
                 // TODO Auto-generated catch block

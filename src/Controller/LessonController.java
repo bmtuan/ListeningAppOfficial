@@ -47,15 +47,15 @@ import java.awt.event.*;
 
 public class LessonController extends DocumentFilter
     implements ActionListener, LineListener, KeyListener, DocumentListener, MouseListener {
-    private TopicController topicController;
+    // private TopicController topicController;
     private ExerciseModel exerciseModel;
     private LessonPanel lessonPanel;
 
-    public LessonController(ExerciseModel exerciseModel, LessonPanel lessonPanel, TopicController topicController)
+    public LessonController(ExerciseModel exerciseModel, LessonPanel lessonPanel)
             throws IOException {
         this.exerciseModel = exerciseModel;
         this.lessonPanel = lessonPanel;
-        this.topicController = topicController;
+        // this.topicController = topicController;
         lessonPanel.getText().addKeyListener(this);
         exerciseModel.setTimer(new Timer(1000, this));
         exerciseModel.getTimer().setInitialDelay(0);
