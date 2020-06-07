@@ -28,26 +28,22 @@ public class MenuPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         LoginPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-
+        startLabel2.setLabelFor(null);
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 255));
 
         startLabel1.setIcon(new javax.swing.ImageIcon("Image/start.png")); // NOI18N
-        startLabel1.setDoubleBuffered(true);
         startLabel1.setName(""); // NOI18N
 
         startLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         startLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         startLabel2.setText("Bắt đầu");
-        startLabel2.setToolTipText("");
-        startLabel2.setDoubleBuffered(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

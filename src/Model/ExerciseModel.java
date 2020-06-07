@@ -73,7 +73,7 @@ public class ExerciseModel {
             dict.add(key);
         }
     }
-    public void loadFile() throws FileNotFoundException, UnsupportedAudioFileException, IOException, LineUnavailableException{
+    public void  loadFile() throws FileNotFoundException, UnsupportedAudioFileException, IOException, LineUnavailableException{
         currentTrack++;
         String audioPath = this.currentExercise.getListTrack().get(currentTrack).getAudio();
         audioInputStream = AudioSystem.getAudioInputStream(new File(audioPath).getAbsoluteFile());

@@ -13,7 +13,6 @@ public class LevelModel {
         this.level = level;
         exerciseList = getAllExerciseByLevel(level);
     }
-
     public List<Exercise> getExerciseList() {
         return exerciseList;
     }

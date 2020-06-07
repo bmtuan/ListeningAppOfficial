@@ -2,29 +2,28 @@ package src.Controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.Cursor;
-import java.awt.Color;
+
 import javax.swing.JLabel;
 
-import src.Model.HistoryModel;
+import java.awt.Cursor;
+import java.awt.Color;
+import src.Controller.*;
 import src.View.*;
 
-public class HistoryController implements MouseListener {
-    HistoryModel historyModel;
-    HistoryPanel historyPanel;
+public class HelpController implements MouseListener {
+    private HelpPanel helpPanel;
 
-    public HistoryController(HistoryModel historyModel, HistoryPanel historyPanel) {
-        historyPanel.getBackLabel().addMouseListener(this);
-        this.historyModel = historyModel;
-        this.historyPanel = historyPanel;
+    public HelpPanel getHelpPanel() {
+        return helpPanel;
     }
 
-    public HistoryPanel getHistoryPanel() {
-        return historyPanel;
+    public void setHelpPanel(HelpPanel helpPanel) {
+        this.helpPanel = helpPanel;
     }
 
-    public HistoryModel getHistoryModel() {
-        return historyModel;
+    public HelpController(HelpPanel helpPanel) {
+        helpPanel.getBackLabel().addMouseListener(this);
+        this.helpPanel = helpPanel;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class HistoryController implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        historyPanel.setVisible(false);
+        helpPanel.setVisible(false);
         MenuController menuController = new MenuController(new MenuPanel());
         MainFrame.getInstance().add(menuController.getView());
     }
@@ -50,7 +49,7 @@ public class HistoryController implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         JLabel x = (JLabel) e.getSource();
         x.setForeground(Color.BLUE);
-        historyPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        helpPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
 
@@ -59,7 +58,7 @@ public class HistoryController implements MouseListener {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
         x.setForeground(Color.black);
-        historyPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        helpPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
-
+    
 }

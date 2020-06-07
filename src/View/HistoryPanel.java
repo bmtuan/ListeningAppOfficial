@@ -3,16 +3,11 @@ package src.View;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Cursor;
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.Date;
 import src.Model.*;
-import src.Controller.*;
-public class HistoryPanel extends View implements MouseListener {
+public class HistoryPanel extends View {
     private javax.swing.JLabel backLabel;
     private javax.swing.JTable historyTable;
     private javax.swing.JLabel jLabel2;
@@ -31,7 +26,7 @@ public class HistoryPanel extends View implements MouseListener {
         jPanel4 = new JPanel();
         jScrollPane1 = new JScrollPane();
         historyTable = new JTable();
-        backLabel.addMouseListener(this);
+        // backLabel.addMouseListener(this);
         DefaultTableModel defaultTableModel = new DefaultTableModel() {
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -133,39 +128,12 @@ public class HistoryPanel extends View implements MouseListener {
                         Short.MAX_VALUE));
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-
+    public javax.swing.JLabel getBackLabel() {
+            return backLabel;
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        this.setVisible(false);
-        MenuController menuController = new MenuController(new MenuPanel());
-        MainFrame.getInstance().add(menuController.getView());
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-        JLabel x = (JLabel) e.getSource();
-        x.setForeground(Color.BLUE);
-        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }
-
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        JLabel x = (JLabel) e.getSource();
-        x.setForeground(Color.black);
-        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    public void setBackLabel(javax.swing.JLabel backLabel) {
+            this.backLabel = backLabel;
     }
 
 }

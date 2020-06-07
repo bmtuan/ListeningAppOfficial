@@ -6,12 +6,8 @@ public class History {
     private String Topic;
     private LocalDateTime date;
     private int Score;
-    private String userName;
     public History() {
     }
-
-
-
     public int getLevel() {
         return Level;
     }
@@ -45,19 +41,11 @@ public class History {
     }
     
 
-    public History(int Level, String Topic, int Score, LocalDateTime date, String userName) {
+    public History(int Level, String Topic, int Score, LocalDateTime date) {
         this.Level = Level;
         this.Topic = Topic;
         this.date = date;
         this.Score = Score;
-        this.userName = userName;
-    }
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
     
 }

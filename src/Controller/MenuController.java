@@ -47,7 +47,8 @@ public class MenuController implements MouseListener {
             MainFrame.refresh(hc.getHistoryPanel());
         }
         else if (command == "Hướng dẫn"){
-            MainFrame.refresh(new HelpPanel());
+            HelpController hc = new HelpController(new HelpPanel());
+            MainFrame.refresh(hc.getHelpPanel());
         }
         else {
             int confirm = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát chứ?", "Xác nhận",JOptionPane.YES_NO_OPTION , JOptionPane.DEFAULT_OPTION, (new javax.swing.ImageIcon("Image\\why.png")));
@@ -56,7 +57,6 @@ public class MenuController implements MouseListener {
             }
         }
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
 

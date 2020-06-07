@@ -14,7 +14,6 @@ public class Exercise {
     public Exercise(){
         listTrack = new ArrayList<Track>();
     }
-
     public Exercise(int time, int highScore, String title, int level, ArrayList<Track> listTrack) {
         this.time = time;
         this.highScore = highScore;
@@ -62,12 +61,6 @@ public class Exercise {
     public void setLevel(int level) {
         this.level = level;
     }
-
-    @Override
-    public String toString() {
-        return "Exercise [highScore=" + highScore + ", level=" + level + ", time=" + time + ", title=" + title + "]";
-    }
-
     public String getDescription() {
         return Description;
     }

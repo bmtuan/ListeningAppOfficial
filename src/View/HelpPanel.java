@@ -1,13 +1,8 @@
 package src.View;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.Cursor;
-import java.awt.Color;
-import src.Controller.*;
 import javax.swing.*;
 
-public class HelpPanel extends View implements MouseListener {
+public class HelpPanel extends View {
     private JLabel backLabel;
     private JTextArea helpTextArea;
     private JLabel jLabel3;
@@ -22,7 +17,6 @@ public class HelpPanel extends View implements MouseListener {
         jPanel2 = new JPanel();
         jScrollPane1 = new JScrollPane();
         helpTextArea = new JTextArea();
-        backLabel.addMouseListener(this);
         helpTextArea.setColumns(20);
         helpTextArea.setFont(new java.awt.Font("Arial", 0, 19));
         helpTextArea.setRows(5);
@@ -101,38 +95,12 @@ public class HelpPanel extends View implements MouseListener {
                         Short.MAX_VALUE));
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
 
+    public JLabel getBackLabel() {
+            return backLabel;
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        this.setVisible(false);
-        MenuController menuController = new MenuController(new MenuPanel());
-        MainFrame.getInstance().add(menuController.getView());
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-        JLabel x = (JLabel) e.getSource();
-        x.setForeground(Color.BLUE);
-        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }
-
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        JLabel x = (JLabel) e.getSource();
-        x.setForeground(Color.black);
-        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    public void setBackLabel(JLabel backLabel) {
+            this.backLabel = backLabel;
     }
 }

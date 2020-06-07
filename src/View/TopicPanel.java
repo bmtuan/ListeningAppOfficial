@@ -11,7 +11,7 @@ public class TopicPanel extends JPanel{
     private JPanel panelRight;
     private JPanel panelLeft;
     private JLabel chooseTopicLabel;
-    LevelModel lm;
+    private LevelModel lm;
     private JPanel[] topic;
     private JLabel[] information;
     private JLabel[] title;

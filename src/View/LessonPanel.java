@@ -50,7 +50,7 @@ public class LessonPanel extends JPanel{
     public LessonPanel(){
         initComponents();
     }
-    public void initComponents(){
+    private void initComponents(){
         
         
 
