@@ -55,13 +55,11 @@ public class TopicController implements  MouseListener {
         int level = levelModel.getLevel();
         Exercise ex;
         if (x.getText()=="Trở về"){
-            //topicPanel.setVisible(false);
             LevelController lc = new LevelController(new LevelPanel());
             MainFrame.refresh(lc.getLevelPanel());
         } else 
         try {
             ex = ExerciseDAO.getExerciseByTitle(title, level);
-            // ex = ExerciseDAO.getExerciseByTitle("Go to bed early is better for us", 1);
             ExerciseModel em = new ExerciseModel(ex);
             em.setStartTime(LocalDateTime.now());
             LessonPanel lp = new LessonPanel();
@@ -99,15 +97,7 @@ public class TopicController implements  MouseListener {
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
         JLabel x = (JLabel) e.getSource();
-        // JButton y = (JButton) e.getSource();
         x.setForeground(Color.black);
         topicPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }  
-    // public static void main(String[] args) {
-    //     LevelModel lm = new LevelModel(1);
-    //     for (Track x : lm.getAllExerciseByLevel(1).get(1).getTrackList()){
-    //         System.out.println(x.toString());
-    //     }
-    //     System.out.println("True");
-    //}
 }

@@ -52,13 +52,6 @@ public class History {
         this.Score = Score;
         this.userName = userName;
     }
-
-    @Override
-    public String toString() {
-        return "History [" + "Level =" + Level +", Score = " + Score + ", Topic =" + Topic + ", date =" + date
-                + ", UserName = " + userName + "]";
-    }
-
     public String getUserName() {
         return userName;
     }

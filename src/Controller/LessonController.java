@@ -47,7 +47,6 @@ import java.awt.event.*;
 
 public class LessonController extends DocumentFilter
     implements ActionListener, LineListener, KeyListener, DocumentListener, MouseListener {
-    // private TopicController topicController;
     private ExerciseModel exerciseModel;
     private LessonPanel lessonPanel;
 
@@ -55,7 +54,6 @@ public class LessonController extends DocumentFilter
             throws IOException {
         this.exerciseModel = exerciseModel;
         this.lessonPanel = lessonPanel;
-        // this.topicController = topicController;
         lessonPanel.getText().addKeyListener(this);
         exerciseModel.setTimer(new Timer(1000, this));
         exerciseModel.getTimer().setInitialDelay(0);
@@ -404,7 +402,6 @@ public class LessonController extends DocumentFilter
     private void createHistory() {
         History history = new History();
         history.setDate(exerciseModel.getStartTime());
-        // System.out.println(exerciseModel.getStartTime());
         history.setLevel(exerciseModel.getCurrentExercise().getLevel());
         history.setTopic(exerciseModel.getCurrentExercise().getTitle());
         history.setScore(exerciseModel.getTotalPoint()/(exerciseModel.getCurrentTrack() + 1));

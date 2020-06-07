@@ -56,27 +56,4 @@ public class ExerciseDAO {
             }
         return ex;   
          }
-        // public static void main(String[] args) {
-        //     try {
-        //         for (Exercise x : ExerciseDAO.getAllExerciseByLv(3)) {
-        //             System.out.println(x.toString());
-        //         }
-        //     } catch (SQLException e) {
-        //         // TODO Auto-generated catch block
-        //         e.printStackTrace();
-        //     }
-        // }
-        // public static void main(String[] args) {
-        //     Exercise Ex;
-        //     try {
-        //         Ex = ExerciseDAO.getExerciseByTitle("Exercise pill could replace exercising", 3);
-        //         for (Track x: Ex.getListTrack() ){
-        //             System.out.println(x.toString());
-        //         }
-        //     } catch (SQLException e) {
-        //         // TODO Auto-generated catch block
-        //         e.printStackTrace();
-        //     }
-
-        // }
 }

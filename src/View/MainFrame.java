@@ -8,7 +8,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame{
     private static MainFrame instance = new MainFrame();
     public MainFrame(){
-        setTitle("Listening English Pro");
+        setTitle("Listening English Pro v1.1");
         setSize(850, 600);
         setResizable(false);
         setLocationRelativeTo(null);
