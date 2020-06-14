@@ -52,7 +52,7 @@ public class TopicPanel extends JPanel{
 
         chooseTopicLabel.setFont(new Font("Arial", 0, 24)); // NOI18N
         chooseTopicLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        chooseTopicLabel.setText("Chọn mức nghe");
+        chooseTopicLabel.setText("Chọn bài nghe");
 
         GroupLayout panelLeftLayout = new GroupLayout(panelLeft);
         panelLeft.setLayout(panelLeftLayout);
@@ -86,7 +86,7 @@ public class TopicPanel extends JPanel{
             information[i] = new JLabel();
             information[i].setFont(new Font("Arial", 0, 18));
             information[i].setBackground(new java.awt.Color(102, 102, 255));
-            information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +"     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
+            information[i].setText("Level: "+lm.getLevel()+  "   Time: "+ lm.getAllExerciseByLevel(level).get(i).getTime() +" giây     HighScore: " + lm.getAllExerciseByLevel(level).get(i).getHighScore());
             information[i].setPreferredSize(new Dimension(600, 70));
 
             transcript[i] = new JLabel();

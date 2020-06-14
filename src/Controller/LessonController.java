@@ -346,7 +346,6 @@ public class LessonController extends DocumentFilter
         if (exerciseModel.getCurrentAttempt() != ExerciseModel.getMaxNumOfAttempts()) {
             exerciseModel.setCurrentPoint(exerciseModel.getCurrentPoint() + exerciseModel.getPointPerWord());
             exerciseModel.getPoints()[exerciseModel.getCurrentAttempt() - 1] = exerciseModel.getCurrentPoint();
-
             generateChart(exerciseModel.getCurrentTrack(), exerciseModel.getCurrentAttempt(),
                     exerciseModel.getPoints());
             if (exerciseModel.getCurrentWordPos() == exerciseModel.getStandardizedWords().length - 1) {
